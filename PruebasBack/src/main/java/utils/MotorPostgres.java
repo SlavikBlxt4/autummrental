@@ -1,6 +1,6 @@
 package utils;
 
-
+//commit de prueba
 import java.sql.*;
 import java.util.Properties;
 
