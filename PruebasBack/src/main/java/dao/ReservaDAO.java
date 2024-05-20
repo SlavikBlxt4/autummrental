@@ -40,29 +40,29 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
 
     @Override
     public int add(Reserva bean) {
-        this.motorSql.connect();
+            this.motorSql.connect();
         String sql = "";
-        sql+= "INSERT INTO RESERVA (ID_RESERVA, ID_USUARIO, ID_COCHES, FECHA, ESTADO, PRECIO) VALUES( ";
+        sql+= "INSERT INTO RESERVA (ID_RESERVA, ID_USUARIO, ID_COCHE, FECHA_INICIO, FECHA_FINAL, PRECIO) VALUES( ";
         sql+= bean.getId_reserva();
         sql+= ", ";
         sql+= bean.getId_usuario();
         sql+= ", ";
         sql+= bean.getId_coche();
-        sql+= ", ";
-        sql+= bean.getFecha();
-        sql+= ", ";
-        sql+= bean.isEstado();
-        sql+= ", ";
+        sql+= ", '";
+        sql+= bean.getFecha_inicio();
+        sql+= "', '";
+        sql+= bean.getFecha_fin();
+        sql+= "', ";
         sql+= bean.getPrecio();
         sql+= ");";
 
         //int lastId = "SELECT MAX(ID) from COCHE";
 
         // bean.setId(lastId); //999
-        
+
         int filasModificadas = this.motorSql.execute(sql);
         this.motorSql.disconnect();
-        
+
         return filasModificadas;
     }
 
@@ -91,9 +91,9 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
 
                 reserva.setId_reserva(rs.getInt("ID_RESERVA"));
                 reserva.setId_usuario(rs.getInt("ID_USUARIO"));
-                reserva.setId_coche(rs.getInt("ID_COCHES"));
-                reserva.setFecha(rs.getTimestamp("FECHA"));
-                reserva.setEstado(rs.getBoolean("ESTADO"));
+                reserva.setId_coche(rs.getInt("ID_COCHE"));
+                reserva.setFecha_inicio(rs.getTimestamp("FECHA_INICIO"));
+                reserva.setFecha_fin(rs.getTimestamp("FECHA_FINAL"));
                 reserva.setPrecio(rs.getFloat("PRECIO"));
 
                 reservas.add(reserva);

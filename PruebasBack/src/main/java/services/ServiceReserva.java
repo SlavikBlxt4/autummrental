@@ -20,6 +20,11 @@ public class ServiceReserva {
         return myRepo.findAll(null);
     }
 
+    public int registrarReserva(Reserva reserva) {
+
+        return myRepo.add(reserva);
+    }
+
     // Función para llamar a add()
     /*
     public int añadirPelicula(Usuario usuario){

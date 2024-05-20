@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -12,8 +13,8 @@ public class Reserva {
     private int id_reserva;
     private int id_usuario;
     private int id_coche;
-    private Timestamp fecha;
-    private boolean estado;
+    private Timestamp fecha_inicio;
+    private Timestamp fecha_fin;
     private float precio;
 
     public Reserva() {
@@ -43,21 +44,26 @@ public class Reserva {
         this.id_coche = id_coche;
     }
 
-    public Timestamp getFecha() {
-        return fecha;
+    public Timestamp getFecha_inicio() {
+        return fecha_inicio;
     }
 
-    public void setFecha(Timestamp fecha) {
-        this.fecha = fecha;
+
+    public void setFecha_inicio(Timestamp fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
     }
 
-    public boolean isEstado() {
-        return estado;
+
+    public Timestamp getFecha_fin() {
+        return fecha_fin;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+
+    public void setFecha_fin(Timestamp fecha_fin) {
+        this.fecha_fin = fecha_fin;
     }
+
+
 
     public float getPrecio() {
         return precio;

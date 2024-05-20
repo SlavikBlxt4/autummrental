@@ -18,7 +18,7 @@ public class CocheDAO implements DAO<Coche, Integer> {
             = "INSERT INTO COCHE (MODELO, DETALLES, DESCRIPCION, PRECIO, IMAGEN) VALUES( ";
 
     private final String SQL_FINDALL
-            = "SELECT * FROM COCHE";
+            = "SELECT * FROM COCHE ORDER BY ID_COCHE ASC";
     private final String SQL_DELETE = "DELETE FROM COCHE WHERE ID_COCHE=";
 
     private final String SQL_UPDATE = "UPDATE COCHE SET ";

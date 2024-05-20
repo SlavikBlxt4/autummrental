@@ -10,6 +10,7 @@ public abstract class MotorSQL {
     protected ResultSet rs;
     public abstract void connect();
     public abstract void disconnect();
+
     public abstract ResultSet executeQuery(String SQL);
     public abstract int execute(String SQL);
 }

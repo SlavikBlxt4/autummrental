@@ -668,3 +668,10 @@ var swiper = new Swiper(".reviews-slider", {
 //* initialize
 
 setupListeners();
+
+
+
+
+//funcion fetch reservas
+
+
