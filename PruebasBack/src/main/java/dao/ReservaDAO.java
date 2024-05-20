@@ -42,9 +42,7 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
     public int add(Reserva bean) {
             this.motorSql.connect();
         String sql = "";
-        sql+= "INSERT INTO RESERVA (ID_RESERVA, ID_USUARIO, ID_COCHE, FECHA_INICIO, FECHA_FINAL, PRECIO) VALUES( ";
-        sql+= bean.getId_reserva();
-        sql+= ", ";
+        sql+= "INSERT INTO RESERVA (ID_USUARIO, ID_COCHE, FECHA_INICIO, FECHA_FINAL, PRECIO) VALUES( ";
         sql+= bean.getId_usuario();
         sql+= ", ";
         sql+= bean.getId_coche();
@@ -107,6 +105,10 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
         return reservas;
     }
 
+    @Override
+    public Reserva findPriceById(Integer e) {
+        return null;
+    }
 }
     
   

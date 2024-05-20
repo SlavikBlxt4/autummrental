@@ -31,6 +31,9 @@ public class CocheDAO implements DAO<Coche, Integer> {
     }
 
 
+
+
+
     @Override
     public int add(Coche bean) {
         this.motorSql.connect();
@@ -130,6 +133,26 @@ public class CocheDAO implements DAO<Coche, Integer> {
         return coches;
     }
 
+
+    @Override
+    public Coche findPriceById(Integer e) {
+        String sql = "SELECT precio FROM COCHE WHERE id_coche=" + e;
+
+        Coche coche = null;
+        try {
+            this.motorSql.connect();
+            ResultSet rs = this.motorSql.executeQuery(sql);
+            if (rs.next()) {
+                coche = new Coche();
+                coche.setPrecio(rs.getFloat("precio"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CocheDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.motorSql.disconnect();
+        }
+        return coche;
+    }
 }
     
   

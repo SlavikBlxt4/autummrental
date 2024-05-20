@@ -32,4 +32,9 @@ public class ServiceCoche {
     public int eliminarCoche(int id_coche) {
         return myRepo.delete(id_coche);
     }
+
+    public float obtenerPrecioCochePorId(int id_coche){
+        return myRepo.findPriceById(id_coche).getPrecio();
+    }
+
 }

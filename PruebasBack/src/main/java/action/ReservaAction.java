@@ -51,23 +51,26 @@ public class ReservaAction implements IAction{
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
         DAO reservaDao = new ReservaDAO(motorSql);
         ServiceReserva serviceReserva = new ServiceReserva(reservaDao);
+        ServiceCoche serviceCoche = new ServiceCoche(new CocheDAO(motorSql));
+
 
 
 
 
         int id_usuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
         int id_coche = Integer.parseInt(request.getParameter("COCHE"));
+        float coche_precio = serviceCoche.obtenerPrecioCochePorId(id_coche);
         Timestamp fecha_inicio = Timestamp.valueOf(request.getParameter("FECHA_INICIO"));
         Timestamp fecha_fin = Timestamp.valueOf(request.getParameter("FECHA_FIN"));
-        Coche coche = getCocheById(id_coche); // This method is hypothetical as it's not in the provided snippets.
-        float cochePrecio = coche.getPrecio();
-
         // Calculate the number of days between fecha_inicio and fecha_fin.
         long diffInMillies = Math.abs(fecha_fin.getTime() - fecha_inicio.getTime());
         long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        float precio = coche_precio/30*diffInDays;
+        
 
-        // Calculate the precio for the Reserva.
-        BigDecimal precio = BigDecimal.valueOf(cochePrecio / 30 * diffInDays);
+
+
+
 
 
 
@@ -75,7 +78,7 @@ public class ReservaAction implements IAction{
         Reserva reserva = new Reserva();
         reserva.setId_usuario(id_usuario);
         reserva.setId_coche(id_coche);
-        reserva.setPrecio(precio.floatValue());
+        reserva.setPrecio(precio);
         reserva.setFecha_inicio(fecha_inicio);
         reserva.setFecha_fin(fecha_fin);
 

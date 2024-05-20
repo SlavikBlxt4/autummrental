@@ -118,6 +118,12 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         
         return usuario;
     }
+
+
+    @Override
+    public Usuario findPriceById(Integer e) {
+        return null;
+    }
 }
     
   

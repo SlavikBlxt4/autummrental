@@ -13,4 +13,5 @@ public interface DAO<E,I> {
     public int delete(Integer e);
     public int update(E bean);
     public ArrayList<E> findAll(E bean);
+    public E findPriceById(I e);
 }

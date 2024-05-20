@@ -329,4 +329,9 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
         //     peliculaDAO.delete(2);
     }
 
+
+    @Override
+    public Pelicula findPriceById(Integer e) {
+        return null;
+    }
 }

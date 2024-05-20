@@ -1,10 +1,8 @@
 package utils;
 
-<<<<<<< HEAD
 
-=======
 //commit de prueba
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
+
 import java.sql.*;
 import java.util.Properties;
 
