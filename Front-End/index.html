@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Autumn Rental</title>
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!--  dependencias para slider reviews -->
+
+		<link rel="icon" href="images/Logo.jpg">
+	</head>
+	<body>
+		<header>
+			<div class="container-hero">
+				<div class="container hero">
+					<div class="container-logo">
+						<img src="images/Logo FINAL.jpg" alt="Autumn_renting">
+						<h1 class="logo"><a href="">AUTUMN RENTAL</a></h1>
+					</div>
+
+					<div class="container-user">
+						<i class="fa-solid fa-user" id="user-btn" onclick="abrir()"></i>
+						<button class="cart-btn">
+							<i class="fa-solid fa-clock-rotate-left"></i>
+						  </button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cartas de login y registro -->
+			<div class="login">
+				<div id="login-form" class="form-container">
+				  <button class="cerrar" onclick="cerrar('.login')">
+					<i class="fa-solid fa-xmark"></i>
+				  </button>
+				  <h2>Log <span>In</span></h2>
+				  <form id="login-form">
+					<input type="email" id="login-email" placeholder="Email" required>
+					<input type="password" id="login-password" placeholder="Password" required>
+					<button class="botonUser" type="submit">Log In</button>
+					<p>Don't have an account? <a id="registro-enlace" href="#" onclick="abrirRegistro()">SIGN UP</a></p>
+				  </form>
+				</div>
+			</div>
+			
+			<div class="register">
+				<div id="register-form" class="form-container">
+				  <button class="cerrar" onclick="cerrar('.register')">
+					<i class="fa-solid fa-xmark"></i>
+				  </button>
+				  <h2>Sign <span>Up</span></h2>
+				  <form id="register-form">
+					<input type="email" id="register-email" placeholder="Email" required>
+					<input type="password" id="register-password" placeholder="Password" required>
+					<button class="botonUser" type="submit">Sign Up</button>
+				  </form>
+				</div>
+			</div>
+
+
+			<!-- Apartado carrito -->
+			 <div class="cart-overlay"></div> <!-- máscara oscura que se desplega a la vez que el apartado del carrito -->
+
+			<div class="cart">
+			  <div class="cart-header">
+				<i class="fa-solid fa-arrow-right cart-close"></i>
+				<h2>Your Cart</h2>
+			  </div>
+			  <div class="cart-body"></div>
+			  <div class="cart-footer">
+				<div>
+				  <strong>Total</strong>
+				  <span class="cart-total">0</span>
+				</div>
+				<button class="cart-clear">Clear Cart</button>
+				<button class="checkout">Checkout</button>
+			  </div>
+			</div>
+
+		</header>
+
+		<section class="banner">
+			<div class="content-banner">
+				<p>Flexible Renting</p>
+				<h2>Find your<br />ideal car</h2>
+				<a href="#boton_inicio">See offers</a>
+			</div>
+		</section>
+
+		<main class="main-content">
+
+			<section class="container top-categories" id="Primera-seccion">
+				<h1 class="heading-1">Discover our <span>website</span></h1>
+				<div class="container-categories">
+					<div class="card-category category-moca">
+						<p>Our Vehicles</p>
+						<span><a href="#boton_inicio">Explore</a></span>
+					</div>
+					<div class="card-category category-expreso">
+						<p>About us</p>
+						<span><a href="#Features">Explore</a></span>
+					</div>
+					<div class="card-category category-capuchino">
+						<p>Read Our Blog</p>
+						<span><a href="#Blogs">Explore</a></span>
+					</div>
+				</div>
+			</section>
+
+			<section class="container container-features" id="Features">
+				<div class="card-feature">
+					<i class="fa-solid fa-car"></i>
+					<div class="feature-content">
+						<span>Unlimited Mileage</span>
+						<p>Enjoy the freedom without limits</p>
+					</div>
+				</div>
+				<div class="card-feature">
+					<i class="fa-solid fa-file-circle-check"></i>
+					<div class="feature-content">
+						<span>Flexible Lease Terms</span>
+						<p>Extend or modify your contract as needed</p>
+					</div>
+				</div>
+				<div class="card-feature">
+					<i class="fa-solid fa-screwdriver-wrench"></i>
+					<div class="feature-content">
+						<span>All-Inclusive Insurance</span>
+						<p>Drive with peace of mind</p>
+					</div>
+				</div>
+				<div class="card-feature">
+					<i class="fa-solid fa-headset"></i>
+					<div class="feature-content">
+						<span>24/365 Roadside Assistance</span>
+						<p>Call us at 671 45 45 89</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="gallery" id="Our-journey">
+				<div class="gallery-item" id="Cuadro1">
+					<div class="text">
+						<h1 id="tit1">Who are <span>we</span>?</h2>
+						<p id="tit2">Welcome to Autumn Rental, where years of experience and a commitment to quality converge to offer you unparalleled car rental services. We began our journey with a simple yet ambitious goal: to elevate the car rental experience. Nowadays, our passion and dedication have seen us grow into a respected leader in the industry. <br><br>
+
+							At Autumn Rental, we pride ourselves on the quality of our services. Every vehicle in our diverse fleet is meticulously maintained and regularly updated to ensure safety, comfort, and reliability. Our experienced team goes above and beyond to ensure that each customer receives personalized attention, comprehensive support, and flexible solutions that best meet their needs.<br><br>
+							
+							From our early days to now, our mission has remained the same: to provide exceptional service and reliable vehicles that you can trust. Whether you're renting for business or pleasure, short-term or long, Autumn Rental is here to ensure your journey is smooth and successful. Join us and experience the difference dedication and quality can make.</p>
+						<a href="#Seccion-de-contacto"><button id="boton_inicio">Contact Us</button></a>
+					</div>
+				</div>
+				<div class="gallery-item" id="Cuadro2">
+					<img src="images/Imagen17.jpg">
+				</div>
+			</section>
+
+			<section class="container top-products">
+				<h1 class="heading-1">Our <span>vehicles</span></h1>
+
+				<div class="container-options">
+					<span id="all">Know all</span>
+					<span id="capsules">capsules</span>
+					<span id="boxes">boxes</span>
+					<span id="mix">recommended mix</span>
+				</div>
+
+				<div class="container-products">
+					<!-- Elements rendered dinamically by JS -->
+					<!-- <div class="description" id="description"> 
+						<p>Esta es la descripción de la tarjeta. Haz clic fuera de esta área para cerrar.</p>
+					  </div>-->
+					</div>
+				</div>
+			</section>
+
+			
+			<section class="container reviews">
+				<h1 class="heading-1">Client's <span>reviews</span></h1>
+
+				<div class="swiper reviews-slider">
+					
+					<div class="swiper-wrapper">
+						
+						<div class="swiper-slide box">
+							<img src="images/Cliente1.jpg">
+							<div class="content">
+								<p>
+									"Absolutely fantastic service from start to finish! The car was in pristine condition and the staff was incredibly helpful."
+								</p>
+								<h3>James T.</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+						</div>	
+							
+						<div class="swiper-slide box">
+							<img src="images/Cliente2.jpg">
+							<div class="content">
+								<p>
+									"Renting from this company was hassle-free and affordable. I appreciated the transparency and no hidden fees."
+								</p>
+								<h3>Maria E.</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-half-alt"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide box">
+							<img src="images/Cliente3.jpg">
+							<div class="content">
+								<p>
+									"Highly recommend for anyone needing a flexible leasing option. The customer service team was exceptional in accommodating my requests."
+								</p>
+								<h3>Liam S.</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide box">
+							<img src="images/Cliente4.jpg">
+							<div class="content">
+								<p>
+									"The best car rental experience I've ever had! Great selection of vehicles and the unlimited mileage was a huge plus."
+								</p>
+								<h3>Sophia R.</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-half-alt"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide box">
+							<img src="images/Cliente5.jpg">
+							<div class="content">
+								<p>
+									"Efficient, reliable, and straightforward. Everything from booking to return was smooth, making my business trip stress-free."
+								</p>
+								<h3>Ethan K.</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				
+					<div class="swiper-pagination"></div>
+				</div>
+
+			</section>
+		
+
+			<section class="container blogs" id="Blogs">
+				<h1 class="heading-1">Read our <span>articles</span></h1>
+
+				<div class="container-blogs">
+					<div class="card-blog">
+						<div class="container-img">
+							<img src="images/Imagen25.jpg" alt="Imagen Blog 1" id="imgblog1" />
+							<div class="button-group-blog">
+								<span>
+									<i class="fa-solid fa-magnifying-glass"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-link"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Navigating Through the Rain</h3>
+							<span>23th April 2024</span>
+							<p>
+								As the rain begins to pour, driving can become a challenging task. This article provides essential tips to ensure your safety 
+								on wet roads. Learn how to maintain visibility, control, and confidence behind the wheel, even as the skies open up. We’ll 
+								cover everything from tire maintenance to effective braking techniques.
+							</p>
+							<div class="btn-read-more">Read More</div>
+						</div>
+					</div>
+					<div class="card-blog" id="blog2">
+						<div class="container-img">
+							<img src="images/Imagen24.jpg" alt="Imagen Blog 2"  id="imgblog1"/>
+							<div class="button-group-blog">
+								<span>
+									<i class="fa-solid fa-magnifying-glass"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-link"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Top Thrilling Roads to Explore</h3>
+							<span>15th March 2024</span>
+							<p>
+								Ready for an adventure? Discover some of the world's most thrilling roads to drive on. From the winding passes of the Alps to the 
+								breathtaking coastal vistas, we list the must-drive routes that promise an unforgettable journey. Get behind the wheel of your 
+								rental car and prepare for spectacular views and exhilarating drives.
+							</p>
+							<div class="btn-read-more">Read More</div>
+						</div>
+					</div>
+					<div class="card-blog" id="blog3">
+						<div class="container-img">
+							<img src="images/Imagen22.jpg" alt="Imagen Blog 3" id="imgblog1" />
+							<div class="button-group-blog">
+								<span>
+									<i class="fa-solid fa-magnifying-glass"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-link"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Essential Maintenance Tips</h3>
+							<span>7th February 2024</span>
+							<p>
+								Maintaining a rental car in top condition is crucial, not only for a smooth ride but also to avoid extra fees. In this article, 
+								we explore simple yet effective maintenance tips that every driver should know. From checking fluids to understanding what signs 
+								indicate a need for professional check-ups, we've got you covered.
+							</p>
+							<div class="btn-read-more">Read More</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<section class="fullscreen-image">
+			<img class="horizontal" src="images/Imagen1.jpg" alt="Imagen horizontal a pantalla completa">
+		</section>
+
+
+		<section class="seccion-contacto" id="Seccion-de-contacto">
+			<div id="logo-formulario">
+				<img src="images/Logo FINAL.jpg" alt="Logo Sabor Selecto" />
+			</div>
+			<div class="contact-form" id="contacto">
+				<div class="form-container-contacto">
+					<h1>Write <span>us</span></h1>
+					<form action="#" method="post">
+						<label for="name">Name*:</label>
+						<input type="text" id="name" name="name" required>
+
+						<label for="email">Email*:</label>
+						<input type="email" id="email" name="email" required>
+
+						<label for="message">Message*:</label>
+						<textarea id="message" name="message" rows="4" required></textarea>
+
+						<button type="submit" id="boton_formulario">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</section>	
+
+		<footer class="footer">
+			<div class="container container-footer">
+				<div class="menu-footer">
+					<div class="contact-info">
+						<p class="title-footer">CONTACT INFORMATION</p>
+						<ul>
+							<li>
+								Adress: 20 Aragon Street, 50018, Zaragoza, Spain
+							</li>
+							<li>Phone number: +34 671 45 45 89</li>
+							<li>Fax: 789456123</li>
+							<li>EmaiL: autumnrental@support.org</li>
+						</ul>
+						<div class="social-icons">
+							<span class="facebook">
+								<i class="fa-brands fa-facebook-f"></i>
+							</span>
+							<span class="twitter">
+								<i class="fa-brands fa-twitter"></i>
+							</span>
+							<span class="youtube">
+								<i class="fa-brands fa-youtube"></i>
+							</span>
+							<span class="pinterest">
+								<i class="fa-brands fa-pinterest-p"></i>
+							</span>
+							<span class="instagram">
+								<i class="fa-brands fa-instagram"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="information">
+						<p class="title-footer">INFORMATION</p>
+						<ul>
+							<li><a href="#Features">About us</a></li>
+							<li><a href="#Primera-seccion">Delivery information</a></li>
+							<li><a href="#Primera-seccion">Privacy Policies</a></li>
+							<li><a href="#Primera-seccion">Terms and Conditions</a></li>
+							<li><a href="#Seccion-de-contacto">Contact us</a></li>
+						</ul>
+					</div>
+
+					<div class="my-account">
+						<p class="title-footer">Do you work with us?</p>
+
+						<ul>
+							<li><a id="employee">I'm an employee</a></li>
+							<li><a id="manager">I'm a manager</a></li>
+							<!-- <li><a href="#">Lista de deseos</a></li>
+							<li><a href="#">Boletín</a></li>
+							<li><a href="#">Reembolsos</a></li> -->
+						</ul>
+					</div>
+				</div>
+
+				<div class="copyright">
+					<p>
+						&copy; 2024 Autumn Rental | All rights reserved.
+					</p>
+
+				</div>
+			</div>
+		</footer>
+
+		<script
+			src="https://kit.fontawesome.com/81581fb069.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!--  dependencias para slider reviews -->
+
+		<script src='js/index.js'></script>
+	</body>
+</html>
