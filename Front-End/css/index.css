@@ -847,26 +847,16 @@ html {
 /* Products */
 .container-products {
 	display: grid;
-<<<<<<< HEAD
 	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 	gap: 3rem;
 }
 
 .coche-container {
-=======
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-	gap: 3rem;
-	
-}
-
-.card-product {
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 	background-color: #ffffff;
 	padding: 2rem 3rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
 	max-width: 800px;
 }
 
@@ -918,165 +908,10 @@ html {
 
 .coche-container button:active {
     box-shadow: inset 0 100px 0 0 #4dbbd1;
-=======
-	max-width: 200px;
-}
-
-#employee:hover{
-	cursor: pointer;
-}
-
-#manager:hover{
-	cursor: pointer;
-}
-
-.container-img {
-	position: relative;
-	
-}
-
-.container-img img {
-	width: 100%;
-	max-height: 125px;
-	
-}
-
-#imgblog1{
-	max-height: none;
-}
-
-.container-img .discount {
-	position: absolute;
-	left: 0;
-	background-color: var(--primary-color);
-	color: #fff;
-	padding: 2px 1.2rem;
-	border-radius: 1rem;
-	font-size: 1.2rem;
-}
-
-.card-product:hover .discount {
-	background-color: #000;
-}
-
-.button-group {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	position: absolute;
-	top: 0;
-	right: -3rem;
-	z-index: -1;
-	transition: all 0.4s ease;
-}
-
-.button-group span {
-	border: 1px solid var(--primary-color);
-	padding: 0.8rem;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.4s ease;
-}
-
-.button-group span:hover {
-	background-color: var(--primary-color);
-}
-
-.button-group span i {
-	font-size: 1.5rem;
-	color: var(--primary-color);
-}
-
-.button-group span:hover i {
-	color: #fff;
-}
-
-.card-product:hover .button-group {
-	z-index: 0;
-	right: -1rem;
-}
-
-.content-card-product {
-	background-color: #ffffff;
-	display: grid;
-	justify-items: center;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: repeat(4, 15px);
-	row-gap: 1.5rem;
-	padding-bottom: 34px;
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 }
 
 
 
-<<<<<<< HEAD
-=======
-.content-card-product h3 {
-	grid-row: 1/4;
-	grid-column: 1/-1;
-	font-weight: 600;
-	font-size: 1.6rem;
-	margin-bottom: 1rem;
-	cursor: pointer;
-}
-
-
-.content-card-product p {
-	grid-row: 2/4;
-	grid-column: 1/-1;
-	font-size: 1.4rem;
-	color: #777;
-}
-
-.content-card-product h3:hover {
-	color: var(--primary-color);
-}
-
-.add-cart {
-	justify-self: start;
-	border: 2px solid var(--primary-color);
-	padding: 2rem 1.5rem 2rem 1.5rem;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.4s ease;
-	grid-row: 4/4;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.add-cart:hover {
-	background-color: var(--primary-color);
-}
-
-.add-cart i {
-	font-size: 1.5rem;
-	color: var(--primary-color);
-}
-
-.add-cart:hover i {
-	color: #fff;
-}
-
-.content-card-product .price {
-	align-self: center;
-	grid-row: 3/4;
-	font-size: 1.7rem;
-	font-weight: 600;
-}
-
-.content-card-product .price span {
-	font-size: 1.5rem;
-	font-weight: 800;
-	color: #777;
-	margin-left: 0.5rem;
-}
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 
 /* ********************************** */
 /*              REVIEWS               */
@@ -1264,7 +1099,6 @@ html {
 	box-shadow: inset 0 100px 0 0 #4dbbd1;
 	}
 
-<<<<<<< HEAD
 	.container-img img {
 		width: 100%;
 		max-height: 125px;
@@ -1274,8 +1108,6 @@ html {
 		max-height: none;
 	}
 
-=======
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 /* ********************************** */
 /*       FOTO DE FONDO - RUPTURA      */
 /* ********************************** */
@@ -1573,7 +1405,6 @@ textarea {
 	color: #FD7C07;
 }
 
-<<<<<<< HEAD
 #employee:hover{
 	cursor: pointer;
 }
@@ -1582,8 +1413,6 @@ textarea {
 	cursor: pointer;
 }
 
-=======
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 
 /* ********************************** */
 /*       MEDIA QUERIES -- 1500px       */
@@ -2149,7 +1978,6 @@ textarea {
 		padding-bottom: 6rem;
 	}
 
-<<<<<<< HEAD
 	.container-products {
 		flex-direction: column;
 		align-items: center;
@@ -2187,8 +2015,6 @@ textarea {
 		margin-left: 0em;
 	}
 
-=======
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 	/* Sección reviews */
 	.reviews{
 		padding-top: 6rem;
