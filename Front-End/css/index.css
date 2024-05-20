@@ -847,171 +847,71 @@ html {
 /* Products */
 .container-products {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 	gap: 3rem;
-	
 }
 
-.card-product {
+.coche-container {
 	background-color: #ffffff;
 	padding: 2rem 3rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-	max-width: 200px;
+	max-width: 800px;
 }
 
-#employee:hover{
-	cursor: pointer;
-}
 
-#manager:hover{
-	cursor: pointer;
-}
-
-.container-img {
-	position: relative;
-	
-}
-
-.container-img img {
+.coche-container img {
 	width: 100%;
-	max-height: 125px;
+	max-height: 500px;
 	
 }
 
-#imgblog1{
-	max-height: none;
+.coche-container h3 {
+	margin-left: 1.8rem;
+	font-size: 1.4rem;
 }
 
-.container-img .discount {
-	position: absolute;
-	left: 0;
-	background-color: var(--primary-color);
-	color: #fff;
-	padding: 2px 1.2rem;
-	border-radius: 1rem;
+.coche-container h5{
+	margin-left: 1.8rem;
 	font-size: 1.2rem;
 }
 
-.card-product:hover .discount {
-	background-color: #000;
+.coche-container p{
+	margin-left: 1.8rem;
+	font-size: 1.2rem;
 }
 
-.button-group {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	position: absolute;
-	top: 0;
-	right: -3rem;
-	z-index: -1;
-	transition: all 0.4s ease;
-}
-
-.button-group span {
-	border: 1px solid var(--primary-color);
-	padding: 0.8rem;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.4s ease;
-}
-
-.button-group span:hover {
-	background-color: var(--primary-color);
-}
-
-.button-group span i {
-	font-size: 1.5rem;
-	color: var(--primary-color);
-}
-
-.button-group span:hover i {
+.coche-container button {
+    text-decoration: none;
 	color: #fff;
+	background-color: #FD7C07;
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	border-radius: 3rem;
+	font-size: 1.2rem;
+	border: none;
+	font-family: inherit;
+	box-shadow: inset 0 0 0 0 #FD7C07;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+
+	margin-top: 10px;
+	margin-left: 0.7em;
 }
 
-.card-product:hover .button-group {
-	z-index: 0;
-	right: -1rem;
+.coche-container button:hover {
+	box-shadow: inset 0 100px 0 0 #2DA2B9;
+    color: #FFF;
 }
 
-.content-card-product {
-	background-color: #ffffff;
-	display: grid;
-	justify-items: center;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: repeat(4, 15px);
-	row-gap: 1.5rem;
-	padding-bottom: 34px;
-}
-
-
-
-.content-card-product h3 {
-	grid-row: 1/4;
-	grid-column: 1/-1;
-	font-weight: 600;
-	font-size: 1.6rem;
-	margin-bottom: 1rem;
-	cursor: pointer;
+.coche-container button:active {
+    box-shadow: inset 0 100px 0 0 #4dbbd1;
 }
 
 
-.content-card-product p {
-	grid-row: 2/4;
-	grid-column: 1/-1;
-	font-size: 1.4rem;
-	color: #777;
-}
 
-.content-card-product h3:hover {
-	color: var(--primary-color);
-}
-
-.add-cart {
-	justify-self: start;
-	border: 2px solid var(--primary-color);
-	padding: 2rem 1.5rem 2rem 1.5rem;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.4s ease;
-	grid-row: 4/4;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.add-cart:hover {
-	background-color: var(--primary-color);
-}
-
-.add-cart i {
-	font-size: 1.5rem;
-	color: var(--primary-color);
-}
-
-.add-cart:hover i {
-	color: #fff;
-}
-
-.content-card-product .price {
-	align-self: center;
-	grid-row: 3/4;
-	font-size: 1.7rem;
-	font-weight: 600;
-}
-
-.content-card-product .price span {
-	font-size: 1.5rem;
-	font-weight: 800;
-	color: #777;
-	margin-left: 0.5rem;
-}
 
 /* ********************************** */
 /*              REVIEWS               */
@@ -1197,6 +1097,15 @@ html {
 	
 	.btn-read-more:active {
 	box-shadow: inset 0 100px 0 0 #4dbbd1;
+	}
+
+	.container-img img {
+		width: 100%;
+		max-height: 125px;
+	}
+	
+	#imgblog1{
+		max-height: none;
 	}
 
 /* ********************************** */
@@ -1494,6 +1403,14 @@ textarea {
 	font-weight: 400;
 	font-size: 1.6rem;
 	color: #FD7C07;
+}
+
+#employee:hover{
+	cursor: pointer;
+}
+
+#manager:hover{
+	cursor: pointer;
 }
 
 
@@ -2059,6 +1976,43 @@ textarea {
 	.top-products{
 		padding-top: 5rem;
 		padding-bottom: 6rem;
+	}
+
+	.container-products {
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}	
+
+	.coche-container {
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.coche-container h3 {
+		margin-left: 0rem;
+		font-size: 1.6rem;
+	}
+	
+	.coche-container h5{
+		margin-left: 0rem;
+		font-size: 1.3rem;
+	}
+	
+	.coche-container p{
+		margin-left: 0rem;
+		font-size: 1.3rem;
+	}
+	
+	.coche-container button {
+		padding: 1rem 2.5rem;
+		border-radius: 3rem;
+		font-size: 1.4rem;
+		margin-left: 0em;
 	}
 
 	/* Sección reviews */

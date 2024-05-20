@@ -1,15 +1,41 @@
+import { CarService } from './service/carService.js';
+import { CarComponent } from './components/carComponent.js';
+
 let products = [];
 let cart = [];
 let usuarioId;
 
-/* ZONA DE AVANCES DE XAVI */
+/* ZONA DE AUTUMN RENTAL */
+
+const appContainer = document.getElementById('car-render');
+
+async function cargarCoches() {
+    try {
+        // Obtener coches del servicio
+        const coches = await CarService.obtenerCoches();
+        
+        // Limpiar contenedor
+        appContainer.innerHTML = '';
+
+        // Renderizar coches
+        coches.forEach(cocheData => {
+            const cocheComponent = new CarComponent(cocheData);
+            const cocheElement = cocheComponent.render();
+            appContainer.appendChild(cocheElement);
+        });
+    } catch (error) {
+        console.error('Error al cargar las películas:', error);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchCoffees();
-  fetchCategories();
+  cargarCoches();
 
 });
 
+
+
+/* ZONA DE AVANCES DE XAVI */
 
 // Guardar usuarioId en localStorage
 
@@ -44,15 +70,7 @@ function enlaceClicado(url, puerto) {
 }
 
 
-function fetchCoffees(){
-  fetch('http://localhost:3000/coffee')
-  .then(response => response.json())
-  .then(data => {
-      console.log(data);
-      createProductCards(data);
-      renderProducts(data);
-  });
-}
+
 
 // Agregar un evento de clic al enlace para manejarlo con la función enlaceClicado
 document.getElementById('employee').addEventListener('click', function(){
@@ -183,53 +201,8 @@ function updateDisplay(priceElement, disponibilidad) {
   }
 }
 
-// Función para crear una tarjeta de producto
-function createProductCard(product) {
-  // Crear el elemento de la tarjeta del producto
-  const cardProduct = document.createElement('div');
-  cardProduct.classList.add('card-product');
-  //cardProduct.setAttribute('id', 'product');
-  if (product.category_id === 3) {
-    cardProduct.style.width = '300px';
-  }
-
-    // Check if product.descripcion is null and adjust the display accordingly
-    const productDescription = product.descripcion ? `<p>${product.descripcion}</p>` : '';
 
 
-  // Agregar contenido a la tarjeta
-  cardProduct.innerHTML = `
-      <div class="container-img">
-          <img src="${product.imagen}" />
-          <div class="button-group">
-              <span><i class="fa-regular fa-eye"></i></span>
-              <span><i class="fa-regular fa-heart"></i></span>
-              <span><i class="fa-solid fa-code-compare"></i></span>
-          </div>
-      </div>
-      <div class="content-card-product">
-          <!-- <div class="stars">
-              ${'*'.repeat(product.stars).split('').map(star => `<i class="fa-solid fa-star"></i>`).join('')}
-              ${'*'.repeat(5 - product.stars).split('').map(star => `<i class="fa-regular fa-star"></i>`).join('')}
-          </div> --> 
-          <h3>${product.nombre}</h3>
-          ${productDescription}
-          <p class="price">${product.precio} <span></span></p>
-          <span class="add-cart">
-              <i class="fa-solid fa-bag-shopping"></i>
-          </span>
-          
-      </div>
-  `;
-
-
-  // Seleccionar el elemento span y actualizar la visualización
-  const priceElement = cardProduct.querySelector('.price span');
-  updateDisplay(priceElement, product.disponibilidad);
-
-  return cardProduct;
-  
-}
 
 // Función para renderizar productos
 function renderProducts(products) {
