@@ -2,7 +2,10 @@ import { CarService } from './service/carService.js';
 // import { ReservationService } from './service/reservationService.js';
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 // Anadir coche
 document.getElementById('add-button-car').addEventListener('click', function(event) {
   event.preventDefault();
