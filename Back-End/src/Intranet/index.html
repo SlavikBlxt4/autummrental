@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Staff area</title>
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!--  dependencias para slider reviews -->
+
+		<link rel="icon" href="images/Logo.jpg">
+	</head>
+	<body>
+		<header>
+			<div class="container-hero">
+				<div class="container hero">
+					<div class="container-logo">
+						<img src="images/Logo FINAL.jpg" alt="Autumn_renting">
+						<h1 class="logo"><a href="">STAFF AREA<span> || AUTUMN RENTAL</span></a></h1>
+					</div>
+
+					<div class="container-user">
+						<button class="cart-btn">
+							<i class="fa-solid fa-door-open"></i>
+						  </button>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<section class="banner">
+			<div class="content-banner">
+				<p>Staff area</p>
+				<h2>Welcome</h2>
+				<a href="#boton_inicio">Action</a>
+			</div>
+		</section>
+
+		<main class="main-content">
+
+			<section class="container car" id="Primera-seccion">
+				<h1 class="heading-1">Add a <span>new car</span></h1>
+				<form action="#" method="post">
+					<label for="model-add-car">Model*:</label>
+					<input type="text" id="model-add-car" name="model-add-car" required>
+
+					<label for="details-add-car">Details*:</label>
+					<input type="text" id="details-add-car" name="details-add-car" required>
+
+					<label for="price-add-car">Price*:</label>
+					<input type="number" id="price-add-car" name="price-add-car" required>
+
+					<label for="photo-add-car">Photo url*:</label>
+					<input id="photo-add-car" name="photo-add-car" required>
+
+					<label for="description-add-car">Description*:</label>
+					<textarea id="description-add-car" name="description-add-car" rows="6" required></textarea>
+
+					<button type="submit" id="add-button-car" class="botones-formularios">Add This Car</button>
+				</form>
+			</section>
+
+			<section class="container car" id="Segunda-seccion">
+				<h1 class="heading-1"><span>Modify</span> a car's information</h1>
+				<form action="#" method="post">
+					<label for="id-modify-car">Id*:</label>
+					<input type="number" id="id-modify-car" name="id-modify-car" required>
+
+					<label for="model-modify-car" >Model:</label>
+					<input type="text" id="model-modify-car" name="model-modify-car">
+
+					<label for="details-modify-car">Details:</label>
+					<input type="text" id="details-modify-car" name="details-modify-car">
+
+					<label for="price-modify-car">Price:</label>
+					<input type="number" id="price-modify-car" name="price-modify-car">
+
+					<label for="availability-modify-car">Availability:</label>
+					<select id="availability-modify-car" name="availability-modify-car">
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+
+					<label for="photo-modify-car">Photo url:</label>
+					<input id="photo-modify-car" name="photo-modify-car">
+
+					<label for="description-modify-car">Description:</label>
+					<textarea id="description-modify-car" name="description-modify-car" rows="6"></textarea>
+
+					<button type="submit" id="modify-button-car" class="botones-formularios">Modify The Car</button>
+				</form>
+			</section>
+
+			<section class="container car" id="Tercera-seccion">
+				<h1 class="heading-1"><span>Delete</span> a car</h1>
+				<form action="#" method="post">
+					<label for="id-delete-car">Id*:</label>
+					<input type="number" id="id-delete-car" name="id-delete-car" required>
+
+					<button type="submit" id="delete-button-car" class="botones-formularios">Delete This Car</button>
+				</form>
+			</section>
+
+			<section class="container car" id="Cuarta-seccion">
+				<h1 class="heading-1">Add a <span>new reservation</span></h1>
+				<form action="#" method="post">
+					<label for="iduser-add-reservation">User's id*:</label>
+					<input type="number" id="iduser-add-reservation" name="iduser-add-reservation" required>
+
+					<label for="idvehicle-add-reservation">Vehicle's id*:</label>
+					<input type="number" id="idvehicle-add-reservation" name="idvehicle-add-reservation" required>
+
+					<label for="price-add-reservation">Price*:</label>
+					<input type="number" id="price-add-reservation" name="price-add-reservation" required>
+
+					<label for="startdate-add-reservation">Start date*:</label>
+					<input type="date" id="startdate-add-reservation" name="startdate-add-reservation" required>
+
+					<label for="finishtdate-add-reservation">End date:</label>
+					<input type="date" id="finishtdate-add-reservation" name="finishtdate-add-reservation">
+
+					<button type="submit" id="add-button-reservation" class="botones-formularios">Add This Reservation</button>
+				</form>
+			</section>
+
+			<section class="container car" id="Quinta-seccion">
+				<h1 class="heading-1"><span>Modify</span> a reservation</h1>
+				<form action="#" method="post">
+					<label for="idreservation-modify-reservation">Reservation's id*:</label>
+					<input type="number" id="idreservation-modify-reservation" name="idreservation-modify-reservation" required>
+
+					<label for="iduser-modify-reservation">User's id:</label>
+					<input type="number" id="iduser-modify-reservation" name="iduser-modify-reservation">
+
+					<label for="idvehicle-modify-reservation">Vehicle's id:</label>
+					<input type="number" id="idvehicle-modify-reservation" name="idvehicle-modify-reservation">
+
+					<label for="price-add-reservation">Price:</label>
+					<input type="number" id="price-add-reservation" name="price-add-reservation">
+
+					<label for="startdate-modify-reservation">Start date:</label>
+					<input type="date" id="startdate-modify-reservation" name="startdate-modify-reservation">
+
+					<label for="finishtdate-modify-reservation">End date:</label>
+					<input type="date" id="finishtdate-modify-reservation" name="finishtdate-modify-reservation">
+
+					<button type="submit" id="modify-button-reservation" class="botones-formularios">Modify The Reservation</button>
+				</form>
+			</section>
+
+			<section class="container car" id="Sexta-seccion">
+				<h1 class="heading-1"><span>Delete</span> a reservation</h1>
+				<form action="#" method="post">
+					<label for="idreservation-delete-reservation">Reservation's id*:</label>
+					<input type="number" id="idreservation-delete-reservation" name="idreservation-delete-reservation" required>
+
+					<button type="submit" id="delete-button-reservation" class="botones-formularios">Delete This Reservation</button>
+				</form>
+			</section>
+
+		</main>
+
+		
+
+
+		<section class="seccion-contacto" id="Seccion-de-contacto">
+			<div id="logo-formulario">
+				<img src="images/Logo FINAL.jpg" alt="Logo Sabor Selecto" />
+			</div>
+		</section>	
+
+		<footer class="footer">
+			<div class="container container-footer">
+					
+				<div class="copyright">
+					<p>
+						&copy; 2024 Autumn Rental | All rights reserved.
+					</p>
+
+				</div>
+			</div>
+		</footer>
+
+		<script
+			src="https://kit.fontawesome.com/81581fb069.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!--  dependencias para slider reviews -->
+
+		<script type="module" src='js/index.js'></script>
+	</body>
+</html>
