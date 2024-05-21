@@ -13,7 +13,7 @@ export class ReservationRepository{
 
     static async updateReservation(reservationId, endDate) {
 
-        //const urlApi = `http://localhost:8080/AutumnRental/Controller?ACTION=COCHE.UPDATE_CAR&ID_COCHE=${id_coche}&MODELO=${modelo}&DETALLES=${detalles}&PRECIO=${precio}&DISPONIBILIDAD=${disponibilidad}&IMAGEN=${url}&DESCRIPCION=${descripcion}`;
+        const urlApi = `http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.UPDATE_RESERVA&ID_RESERVA=${reservationId}&FECHA_FIN=${endDate}`;
 
         try {
             const response = await fetch(urlApi);

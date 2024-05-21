@@ -90,6 +90,29 @@ document.getElementById('modify-button-car').addEventListener('click', function(
     });
 });
 
+//modificar reserva
+
+document.getElementById('modify-button-reservation').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const id = document.getElementById('idreservation-modify-reservation').value;
+  const endDate = document.getElementById('finishtdate-modify-reservation').value;
+
+  ReservationService.modificarReserva(id, endDate)
+  .then(response => {
+    console.log(response);
+    alert('Reserva modificada correctamente');
+
+    document.getElementById('idreservation-modify-reservation').value = '';
+    document.getElementById('finishtdate-modify-reservation').value = '';
+  })
+  .catch(error => {
+    console.error(error);
+    alert('Ocurrio un error al modificar la reserva');
+  });
+
+});
+
 
 // Borrar coche
 document.getElementById('delete-button-car').addEventListener('click', function(event) {

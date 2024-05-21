@@ -50,6 +50,9 @@ public class ReservaAction implements IAction{
         return cadDestino;
     }
 
+
+    //funcion para actualizar la fecha de la reserva
+    // http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.UPDATE_RESERVA&ID_RESERVA=6&FECHA_FIN=2024-04-30
     private String updateReserva(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSQL = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
         DAO reservaDAO = new ReservaDAO(motorSQL);
@@ -72,6 +75,10 @@ public class ReservaAction implements IAction{
         }
         return resp;
     }
+
+
+    //añadir reserva
+    // http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.NEW_RESERVA&ID_USUARIO=1&COCHE=1&FECHA_INICIO=2024-04-29&FECHA_FIN=2024-04-30
 
     private String addNewReserva(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
