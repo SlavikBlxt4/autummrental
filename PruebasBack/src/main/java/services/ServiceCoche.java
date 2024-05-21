@@ -1,5 +1,6 @@
 package services;
 
+import dao.CocheDAOInterface;
 import dao.DAO;
 import entities.Coche;
 
@@ -7,10 +8,10 @@ import java.util.ArrayList;
 
 public class ServiceCoche {
 
-    private DAO<Coche, Integer> myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
+    private CocheDAOInterface myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
 
     // Constructor en el que se establece el repositorio a llamar
-    public ServiceCoche(DAO<Coche, Integer> myRepo){
+    public ServiceCoche(CocheDAOInterface myRepo){
         this.myRepo = myRepo;
     }
 

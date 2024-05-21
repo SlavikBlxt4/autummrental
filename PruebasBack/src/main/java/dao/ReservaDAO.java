@@ -90,8 +90,8 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
                 reserva.setId_reserva(rs.getInt("ID_RESERVA"));
                 reserva.setId_usuario(rs.getInt("ID_USUARIO"));
                 reserva.setId_coche(rs.getInt("ID_COCHE"));
-                reserva.setFecha_inicio(rs.getTimestamp("FECHA_INICIO"));
-                reserva.setFecha_fin(rs.getTimestamp("FECHA_FINAL"));
+                reserva.setFecha_inicio(rs.getDate("FECHA_INICIO").toLocalDate());
+                reserva.setFecha_fin(rs.getDate("FECHA_FINAL").toLocalDate());
                 reserva.setPrecio(rs.getFloat("PRECIO"));
 
                 reservas.add(reserva);
@@ -105,10 +105,6 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
         return reservas;
     }
 
-    @Override
-    public Reserva findPriceById(Integer e) {
-        return null;
-    }
 }
     
   

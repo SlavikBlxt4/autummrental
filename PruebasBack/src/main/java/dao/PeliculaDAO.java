@@ -11,17 +11,17 @@ import java.util.ArrayList;
 public class PeliculaDAO implements DAO<Pelicula, Integer> {
 
     private final String SQL_FINDALL = "SELECT * FROM peliculas WHERE 1=1 ";
-    
-    private final String SQL_FIND_BY_FILTER = 
+
+    private final String SQL_FIND_BY_FILTER =
             "SELECT p.titulo, p.descripcion, p.ano, c.nombre " +
                     "FROM peliculas p " +
                     "INNER JOIN peliculas_categorias pc ON p.id = pc.id_pelicula " +
                     "INNER JOIN categorias c ON pc.id_categoria = c.id ";
-    
+
     private final String SQL_SEARCH_Start
             = "SELECT * FROM pelicula WHERE ID_Pelicula IN ( SELECT ID_Pelicula FROM clasificar WHERE ID_Clasificacion IN ( SELECT ID_Clasificacion FROM clasificar WHERE ID_Genero IN (SELECT ID_Genero FROM genero WHERE UPPER(Genero) LIKE '%";
     private final String SQL_SEARCH_Final
-            ="%')))";    
+            = "%')))";
     private final String SQL_ADD
             = "INSERT INTO `pelicula` (`Titulo`, `Precio`, `Duracion`, `Trailer`, `Sinopsis`, `N_Votos`, `S_Puntuacion`, `Fecha_Estreno`, `URL`) VALUES ";
     private final String SQL_DELETE = "DELETE FROM `pelicula` WHERE ID_Pelicula=";
@@ -30,8 +30,8 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
 
     public PeliculaDAO(String bd) {
         motorSql = FactoryMotorSQL.getInstance(bd);
-    }   
-    
+    }
+
     @Override
     public ArrayList<Pelicula> findAll(Pelicula bean) {
         ArrayList<Pelicula> peliculas = new ArrayList<>();
@@ -90,7 +90,7 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
                 peliculas.add(pelicula);
 
             }
-       
+
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
@@ -98,11 +98,12 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
         }
         return peliculas;
     }
-     public ArrayList<Pelicula> findAllByCategory(String category) {
+
+    public ArrayList<Pelicula> findAllByCategory(String category) {
         ArrayList<Pelicula> peliculas = new ArrayList<>();
-        String sql = SQL_FIND_BY_FILTER 
-                    + " WHERE c.nombre like '%" + category+ "%'";
-        
+        String sql = SQL_FIND_BY_FILTER
+                + " WHERE c.nombre like '%" + category + "%'";
+
         // SELECT p.titulo, p.descripcion, p.ano, c.nombre
         //FROM peliculas p
         //INNER JOIN peliculas_categorias pc ON p.id = pc.id_pelicula
@@ -116,15 +117,15 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
 
             while (rs.next()) {// TRANSFOMAR LA COLECCIÓN DEBASE DE DATOS A UN ARRAYLIST
                 Pelicula pelicula = new Pelicula();
-                            String titulo = rs.getString(1);
-                            String descp = rs.getString(2);
-                            int anyo = rs.getInt(3);
-                            
-                            pelicula.setTitulo(titulo);
-                            pelicula.setSinopsis(descp);
-                            pelicula.setFechaEstreno(String.valueOf(anyo));
+                String titulo = rs.getString(1);
+                String descp = rs.getString(2);
+                int anyo = rs.getInt(3);
+
+                pelicula.setTitulo(titulo);
+                pelicula.setSinopsis(descp);
+                pelicula.setFechaEstreno(String.valueOf(anyo));
                 peliculas.add(pelicula);
-                            
+
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -136,7 +137,7 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
 
     public ArrayList<Pelicula> filterType(Pelicula bean, String tipo) {
         ArrayList<Pelicula> peliculas = new ArrayList<>();
-        String sql = (SQL_SEARCH_Start+tipo+SQL_SEARCH_Final);
+        String sql = (SQL_SEARCH_Start + tipo + SQL_SEARCH_Final);
         try {
             //1º) 
             motorSql.connect();
@@ -229,6 +230,7 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
         }
         return resp;
     }
+
     @Override
     public int delete(Integer id) {
         int resp = 0;
@@ -250,6 +252,7 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
         }
         return resp;
     }
+
     @Override
     public int update(Pelicula bean) {
         int resp = 0;
@@ -312,6 +315,7 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
         }
         return resp;
     }
+
     public static void main(String[] args) {
 
         PeliculaDAO peliculaDAO = new PeliculaDAO(FactoryMotorSQL.POSTGRES);
@@ -330,8 +334,4 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
     }
 
 
-    @Override
-    public Pelicula findPriceById(Integer e) {
-        return null;
-    }
 }

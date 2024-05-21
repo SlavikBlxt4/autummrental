@@ -1,11 +1,8 @@
 import { CarService } from './service/carService.js';
-// import { ReservationService } from './service/reservationService.js';
+import { ReservationService } from './service/reservationService.js';
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 077e9371d2acea3423a5922d92d194cb0dfb27f0
 // Anadir coche
 document.getElementById('add-button-car').addEventListener('click', function(event) {
   event.preventDefault();
@@ -31,6 +28,32 @@ document.getElementById('add-button-car').addEventListener('click', function(eve
       console.error(error);
       alert('Ocurrió un error al añadir el coche');
     });
+});
+
+//añadir reserva
+
+document.getElementById('add-button-reservation').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const userId = document.getElementById('iduser-add-reservation').value;
+  const carId = document.getElementById('idvehicle-add-reservation').value;
+  const startDate = document.getElementById('startdate-add-reservation').value;
+  const endDate = document.getElementById('finishtdate-add-reservation').value;
+
+
+  ReservationService.añadirReserva(userId, carId, startDate, endDate)
+  .then(response => {
+    console.log(response);
+    alert('Reserva anadida exitosamente');
+    //resetear los valores si todo va bien
+    document.getElementById('iduser-add-reservation').value = '';
+    document.getElementById('idvehicle-add-reservation').value = '';
+    document.getElementById('startdate-add-reservation').value = '';
+    document.getElementById('finishtdate-add-reservation').value = '';
+  }).catch(error =>{
+    console.error(error);
+    alert('Ocurrio un error al anadir la reserva');
+  });
 });
 
 

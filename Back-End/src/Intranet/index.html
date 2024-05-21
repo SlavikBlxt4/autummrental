@@ -50,7 +50,7 @@
 					<input type="text" id="details-add-car" name="details-add-car" required>
 
 					<label for="price-add-car">Price*:</label>
-					<input type="number" id="price-add-car" name="price-add-car" required>
+					<input type="number" id="price-add-car" name="price-add-car" min="50" required>
 
 					<label for="photo-add-car">Photo url*:</label>
 					<input id="photo-add-car" name="photo-add-car" required>
@@ -107,19 +107,17 @@
 				<h1 class="heading-1">Add a <span>new reservation</span></h1>
 				<form action="#" method="post">
 					<label for="iduser-add-reservation">User's id*:</label>
-					<input type="number" id="iduser-add-reservation" name="iduser-add-reservation" required>
+					<input type="number" id="iduser-add-reservation" name="iduser-add-reservation" min="0" required>
 
 					<label for="idvehicle-add-reservation">Vehicle's id*:</label>
-					<input type="number" id="idvehicle-add-reservation" name="idvehicle-add-reservation" required>
+					<input type="number" id="idvehicle-add-reservation" name="idvehicle-add-reservation" min="0" required>
 
-					<label for="price-add-reservation">Price*:</label>
-					<input type="number" id="price-add-reservation" name="price-add-reservation" required>
 
 					<label for="startdate-add-reservation">Start date*:</label>
-					<input type="date" id="startdate-add-reservation" name="startdate-add-reservation" required>
+					<input type="date" id="startdate-add-reservation" name="startdate-add-reservation" class="startdate-add-reservation" required>
 
-					<label for="finishtdate-add-reservation">End date:</label>
-					<input type="date" id="finishtdate-add-reservation" name="finishtdate-add-reservation">
+					<label for="finishtdate-add-reservation">End date*:</label>
+					<input type="date" id="finishtdate-add-reservation" name="finishtdate-add-reservation" required>
 
 					<button type="submit" id="add-button-reservation" class="botones-formularios">Add This Reservation</button>
 				</form>
@@ -129,19 +127,7 @@
 				<h1 class="heading-1"><span>Modify</span> a reservation</h1>
 				<form action="#" method="post">
 					<label for="idreservation-modify-reservation">Reservation's id*:</label>
-					<input type="number" id="idreservation-modify-reservation" name="idreservation-modify-reservation" required>
-
-					<label for="iduser-modify-reservation">User's id:</label>
-					<input type="number" id="iduser-modify-reservation" name="iduser-modify-reservation">
-
-					<label for="idvehicle-modify-reservation">Vehicle's id:</label>
-					<input type="number" id="idvehicle-modify-reservation" name="idvehicle-modify-reservation">
-
-					<label for="price-add-reservation">Price:</label>
-					<input type="number" id="price-add-reservation" name="price-add-reservation">
-
-					<label for="startdate-modify-reservation">Start date:</label>
-					<input type="date" id="startdate-modify-reservation" name="startdate-modify-reservation">
+					<input type="number" id="idreservation-modify-reservation" name="idreservation-modify-reservation" min="0" required>
 
 					<label for="finishtdate-modify-reservation">End date:</label>
 					<input type="date" id="finishtdate-modify-reservation" name="finishtdate-modify-reservation">
@@ -154,7 +140,7 @@
 				<h1 class="heading-1"><span>Delete</span> a reservation</h1>
 				<form action="#" method="post">
 					<label for="idreservation-delete-reservation">Reservation's id*:</label>
-					<input type="number" id="idreservation-delete-reservation" name="idreservation-delete-reservation" required>
+					<input type="number" id="idreservation-delete-reservation" name="idreservation-delete-reservation" min="0" required>
 
 					<button type="submit" id="delete-button-reservation" class="botones-formularios">Delete This Reservation</button>
 				</form>

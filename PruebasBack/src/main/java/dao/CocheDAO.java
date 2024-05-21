@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CocheDAO implements DAO<Coche, Integer> {
+public class CocheDAO implements CocheDAOInterface {
 
 
     private final String SQL_ADD
@@ -134,8 +134,9 @@ public class CocheDAO implements DAO<Coche, Integer> {
     }
 
 
+
     @Override
-    public Coche findPriceById(Integer e) {
+    public Coche findPriceById(int e) {
         String sql = "SELECT precio FROM COCHE WHERE id_coche=" + e;
 
         Coche coche = null;

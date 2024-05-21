@@ -14,13 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.time.temporal.ChronoUnit;
 
 public class ReservaAction implements IAction{
 
@@ -37,14 +40,29 @@ public class ReservaAction implements IAction{
                 case "NEW_RESERVA":
                     cadDestino = addNewReserva(request, response);
                     break;
-               /* case "UPDATE_RESERVA":
+                case "UPDATE_RESERVA":
                     cadDestino = updateReserva(request, response);
                     break;
-                case "DELETE_RESERVA":
+                /*case "DELETE_RESERVA":
                     cadDestino = deleteReserva(request, response);
                     break;*/
         }
         return cadDestino;
+    }
+
+    private String updateReserva(HttpServletRequest request, HttpServletResponse response) {
+        MotorSQL motorSQL = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
+        DAO reservaDAO = new ReservaDAO(motorSQL);
+        ServiceReserva serviceReserva = new ServiceReserva(reservaDAO);
+
+        int id_reserva = Integer.parseInt(request.getParameter("ID_RESERVA"));
+        LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
+        //i want to update only the end date depending of each id_reserva
+
+        serviceReserva.updateEndDate(id_reserva, fecha_fin);
+
+
+        return "";
     }
 
     private String addNewReserva(HttpServletRequest request, HttpServletResponse response) {
@@ -60,11 +78,10 @@ public class ReservaAction implements IAction{
         int id_usuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
         int id_coche = Integer.parseInt(request.getParameter("COCHE"));
         float coche_precio = serviceCoche.obtenerPrecioCochePorId(id_coche);
-        Timestamp fecha_inicio = Timestamp.valueOf(request.getParameter("FECHA_INICIO"));
-        Timestamp fecha_fin = Timestamp.valueOf(request.getParameter("FECHA_FIN"));
+        LocalDate fecha_inicio = LocalDate.parse(request.getParameter("FECHA_INICIO"));
+        LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
         // Calculate the number of days between fecha_inicio and fecha_fin.
-        long diffInMillies = Math.abs(fecha_fin.getTime() - fecha_inicio.getTime());
-        long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        long diffInDays = ChronoUnit.DAYS.between(fecha_inicio, fecha_fin);
         float precio = coche_precio/30*diffInDays;
         
 

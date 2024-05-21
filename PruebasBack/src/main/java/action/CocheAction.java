@@ -1,6 +1,7 @@
 package action;
 
 import dao.CocheDAO;
+import dao.CocheDAOInterface;
 import dao.DAO;
 import dao.UsuarioDAO;
 import entities.Coche;
@@ -41,7 +42,7 @@ public class CocheAction implements IAction{
 
     private String addNewCar(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO cocheDao = new CocheDAO(motorSql);
+        CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
 
         String modelo = request.getParameter("MODELO");
@@ -69,7 +70,7 @@ public class CocheAction implements IAction{
 
     private String updateCar(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO cocheDao = new CocheDAO(motorSql);
+        CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
 
         String id_coche = request.getParameter("ID_COCHE");
@@ -108,7 +109,7 @@ public class CocheAction implements IAction{
 
     private String deleteCar(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO cocheDao = new CocheDAO(motorSql);
+        CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
 
         String id_coche = request.getParameter("ID_COCHE");
@@ -125,7 +126,7 @@ public class CocheAction implements IAction{
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO cocheDao = new CocheDAO(motorSql);
+        CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
         ArrayList<Coche> coches = serviceCoche.leerTodosLosCoches();
 

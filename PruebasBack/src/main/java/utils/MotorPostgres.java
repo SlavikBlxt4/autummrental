@@ -16,7 +16,7 @@ public class MotorPostgres extends MotorSQL {
     private static final String PASS = "xavineta753";
     private static final String SSL = "false";
 
-    // Constructor private
+    // Constructo   r private
     private MotorPostgres(){
         this.properties = new Properties();
             this.properties.setProperty("user", USER);

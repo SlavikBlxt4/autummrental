@@ -1,4 +1,4 @@
-export class CarRepository {
+    export class CarRepository {
   
     // Función para anadir un coche a la API
     static async addCar(modelo, detalles, precio, url, descripcion) {

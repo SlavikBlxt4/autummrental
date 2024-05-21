@@ -4,6 +4,7 @@ import dao.DAO;
 import entities.Coche;
 import entities.Reserva;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ServiceReserva {
@@ -23,6 +24,11 @@ public class ServiceReserva {
     public int registrarReserva(Reserva reserva) {
 
         return myRepo.add(reserva);
+    }
+
+    public void updateEndDate(int idReserva, LocalDate fechaFin) {
+
+        myRepo.updateEndDate(idReserva, fechaFin);
     }
 
     // Función para llamar a add()
