@@ -26,9 +26,10 @@ public class ServiceReserva {
         return myRepo.add(reserva);
     }
 
-    public void updateEndDate(int idReserva, LocalDate fechaFin) {
+    public int updateEndDate(Reserva reserva) {
 
-        myRepo.updateEndDate(idReserva, fechaFin);
+        myRepo.update(reserva);
+        return 1;
     }
 
     // Función para llamar a add()

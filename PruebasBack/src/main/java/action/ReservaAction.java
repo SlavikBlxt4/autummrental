@@ -59,10 +59,18 @@ public class ReservaAction implements IAction{
         LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
         //i want to update only the end date depending of each id_reserva
 
-        serviceReserva.updateEndDate(id_reserva, fecha_fin);
+        Reserva reserva = new Reserva();
+        reserva.setId_reserva(id_reserva);
+        reserva.setFecha_fin(fecha_fin);
+        serviceReserva.updateEndDate(reserva);
 
-
-        return "";
+        String resp = "";
+        if (serviceReserva.updateEndDate(reserva) > 0) {
+            resp = "OK";
+        } else {
+            resp = "ERROR";
+        }
+        return resp;
     }
 
     private String addNewReserva(HttpServletRequest request, HttpServletResponse response) {

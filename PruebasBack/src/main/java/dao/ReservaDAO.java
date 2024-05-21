@@ -7,6 +7,7 @@ import utils.MotorSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ReservaDAO implements DAO<Reserva, Integer> {
 
@@ -30,6 +31,7 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
     private final String SQL_DELETE = "DELETE FROM `pelicula` WHERE ID_Pelicula=";
     private final String SQL_UPDATE = "UPDATE `pelicula` SET ";
     */
+    private final String SQL_UPDATE = "UPDATE RESERVA SET ";
 
     private MotorSQL motorSql;
 
@@ -71,7 +73,16 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
 
     @Override
     public int update(Reserva bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.motorSql.connect();
+        String sql = "";
+        sql+= SQL_UPDATE;
+        sql+= "FECHA_FINAL='" + bean.getFecha_fin()+ "'";
+        //hay que hacer un metodo para actualizar el precio cuando se haga un update a la bbdd
+        sql+= " WHERE ID_RESERVA=" + bean.getId_reserva();
+        int filasModificadas = this.motorSql.execute(sql);
+        this.motorSql.disconnect();
+
+        return filasModificadas;
     }
 
     @Override
