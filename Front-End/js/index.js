@@ -92,12 +92,9 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
   const password = document.getElementById('login-password').value;
 
   try {
-      const response = await fetch('http://localhost:3000/users/login', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
+      const response = await fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.LOGIN&EMAIL=${email}&PASSWORD=${password}`, {
+          method: 'GET',
+          
       });
 
       if (!response.ok) {
@@ -147,42 +144,39 @@ document.getElementById('register-form').addEventListener('submit', async (event
   const password = document.getElementById('register-password').value;
 
   try {
-      const response = await fetch('http://localhost:3000/users', {
-          method: 'POST',
+      const response = await fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.REGISTER&EMAIL=${email}&PASSWORD=${password}`, {
+          method: 'GET',
           headers: {
               'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
+          }
       });
 
-      if (!response.ok) {
-          throw new Error('Error al registrar usuario');
+      if(response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Registro exitoso!',
+          text: 'Usuario registrado correctamente.'
+        });
+
+        cerrar('.register');
       }
 
-      const data = await response.json();
 
-      if (data.error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error al registrar',
-            text: data.error === 'User already exists' ? 'Esta cuenta ya está registrada. Por favor, ve a iniciar sesión.' : data.error
-          });
-      } else {
-          console.log(data); // Manejar la respuesta del servidor según lo necesario
+     /* console.log(data); // Manejar la respuesta del servidor según lo necesario
           Swal.fire({
             icon: 'success',
             title: '¡Registro exitoso!',
             text: 'Usuario registrado correctamente.'
           });
-          cerrar('.register');
-      }
+          cerrar('.register');*/
+
 
   } catch (error) {
       console.error('Error al registrar usuario:', error);
       Swal.fire({
         icon: 'error',
-        title: 'Error de conexión',
-        text: 'Esta cuenta ya está registrada. Por favor, ve a iniciar sesión.'
+        title: 'No se pudo registrar usuario',
+        text: 'Ya existe una cuenta con este correo.'
       });
   }
 });
