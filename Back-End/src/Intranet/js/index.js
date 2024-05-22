@@ -151,3 +151,5 @@ document.getElementById('delete-button-reservation').addEventListener('click', f
       alert('Ocurrió un error al eliminar la reserva');
     });
 });
+
+

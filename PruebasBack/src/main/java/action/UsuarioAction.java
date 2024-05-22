@@ -4,15 +4,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DAO;
+import dao.UsuarioDAOInterface;
+import org.mindrot.jbcrypt.BCrypt;
 import services.ServiceUsuario;
 import utils.FactoryMotorSQL;
 import entities.Usuario;
 import dao.UsuarioDAO;
 import utils.MotorSQL;
+import utils.PasswordUtils;
 
 import java.util.ArrayList;
 
-public class UsuarioAction implements IAction{
+public class UsuarioAction implements IAction {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -29,22 +32,27 @@ public class UsuarioAction implements IAction{
             case "FINDALL":
                 cadDestino = findAll(request, response);
                 break;
-                
+
         }
         return cadDestino;
     }
 
     private String register(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO usuarioDao = new UsuarioDAO(motorSql);
+        UsuarioDAOInterface usuarioDao = new UsuarioDAO(motorSql);
         ServiceUsuario serviceUsuario = new ServiceUsuario(usuarioDao);
+
+
+        // Método para generar un hash de una contraseña
+
 
         String email = request.getParameter("EMAIL");
         String password = request.getParameter("PASSWORD");
+        String hashedPassword = PasswordUtils.hashPassword(password);
 
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
-        usuario.setPassword(password);
+        usuario.setPassword(hashedPassword);
 
         String resp = "";
         if (serviceUsuario.registrarUsuario(usuario) > 0) {
@@ -58,32 +66,29 @@ public class UsuarioAction implements IAction{
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO usuarioDao = new UsuarioDAO(motorSql);
+        UsuarioDAOInterface usuarioDao = new UsuarioDAO(motorSql);
         ServiceUsuario serviceUsuario = new ServiceUsuario(usuarioDao);
         ArrayList<Usuario> usuarios = serviceUsuario.leerTodosLosUsuarios();
         return Usuario.toArrayJSon(usuarios);
     }
 
-     private String login(HttpServletRequest request, HttpServletResponse response) {
-        // SELECT * FROM USUARIO WHERE EMAIL = 'a@svalero.com'  AND PASSWORD='1234'
+    private String login(HttpServletRequest request, HttpServletResponse response) {
+        MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
+        UsuarioDAOInterface usuarioDao = new UsuarioDAO(motorSql);
+        ServiceUsuario serviceUsuario = new ServiceUsuario(usuarioDao);
+
         String email = request.getParameter("EMAIL");
         String password = request.getParameter("PASSWORD");
-        //String nombre = request.getParameter("NOMBRE");
-        
-       /* Usuario usuario =new Usuario();
-            usuario.setEmail(email);
-            usuario.setPassword(password);*/
-            //usuario.setNombre(nombre);
 
-         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-         DAO usuarioDAO = new UsuarioDAO(motorSql);
-         
-            //int numUsuarios = usuarioDAO.add(usuario);
-         
-        Usuario usuario2 = ((UsuarioDAO) usuarioDAO).login(email, password);
-        
-        // String resp = "['message:'good', 'usuario':{email:'"+email+"', password:'1234'}]";
-        
-        return Usuario.fromObjectToJSON(usuario2) ; 
+        // Obtener el usuario por email, asumiendo que existe una función para ello
+        Usuario usuario = usuarioDao.findByEmail(email);
+
+        if (usuario != null && PasswordUtils.checkPassword(password, usuario.getPassword())) {
+            // Login exitoso
+            return Usuario.fromObjectToJSON(usuario);
+        } else {
+            // Login fallido
+            return "ERROR";
+        }
     }
 }

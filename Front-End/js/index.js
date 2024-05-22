@@ -570,6 +570,16 @@ Number.prototype.format = function () {
 };
 */
 
+document.getElementById('cerrar-btn-login').addEventListener('click', function(){
+  cerrar('.login');
+})
+document.getElementById('cerrar-btn-register').addEventListener('click', function(){
+  cerrar('.register');
+})
+
+
+
+
 
 // Función para cerrar las cartas de login y registro
 function cerrar(selector) {
@@ -588,6 +598,10 @@ function cerrar(selector) {
 }
 
 // Función para abrir la carta de login
+
+document.getElementById('user-btn').addEventListener('click', function(){
+  abrir();
+})
 function abrir() {
   const loginElement = document.querySelector('.login');
   if (loginElement) {
@@ -596,6 +610,10 @@ function abrir() {
     console.error('No se encontró ningún elemento con la clase .login.');
   }
 }
+
+document.getElementById('registro-enlace').addEventListener('click', function(){
+  abrirRegistro();
+})
 
 // Función para abrir la carta de registro
 function abrirRegistro() {

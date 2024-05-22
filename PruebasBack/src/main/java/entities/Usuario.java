@@ -12,7 +12,7 @@ public class Usuario {
     private int id_rol;
     private String nombre;
     private String email;
-    private String password;
+    private String password;  // This will store the hashed password
 
     public Usuario() {
     }

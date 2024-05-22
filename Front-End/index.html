@@ -21,7 +21,7 @@
 					</div>
 
 					<div class="container-user">
-						<i class="fa-solid fa-user" id="user-btn" onclick="abrir()"></i>
+						<i class="fa-solid fa-user" id="user-btn"></i>
 						<button class="cart-btn">
 							<i class="fa-solid fa-clock-rotate-left"></i>
 						  </button>
@@ -32,7 +32,7 @@
 			<!-- Cartas de login y registro -->
 			<div class="login">
 				<div id="login-form" class="form-container">
-				  <button class="cerrar" onclick="cerrar('.login')">
+				  <button class="cerrar" id="cerrar-btn-login">
 					<i class="fa-solid fa-xmark"></i>
 				  </button>
 				  <h2>Log <span>In</span></h2>
@@ -40,14 +40,14 @@
 					<input type="email" id="login-email" placeholder="Email" required>
 					<input type="password" id="login-password" placeholder="Password" required>
 					<button class="botonUser" type="submit">Log In</button>
-					<p>Don't have an account? <a id="registro-enlace" href="#" onclick="abrirRegistro()">SIGN UP</a></p>
+					<p>Don't have an account? <a id="registro-enlace" href="#">SIGN UP</a></p>
 				  </form>
 				</div>
 			</div>
 			
 			<div class="register">
 				<div id="register-form" class="form-container">
-				  <button class="cerrar" onclick="cerrar('.register')">
+				  <button class="cerrar" id="cerrar-btn-register">
 					<i class="fa-solid fa-xmark"></i>
 				  </button>
 				  <h2>Sign <span>Up</span></h2>

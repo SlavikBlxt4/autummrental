@@ -10,14 +10,23 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UsuarioDAO implements DAO<Usuario, Integer> {
+
+
+
+public class UsuarioDAO implements UsuarioDAOInterface {
 
     
     private final String SQL_ADD
-            = "INSERT INTO USUARIO (NOMBRE, EMAIL, PASSWORD) VALUES( ";
+            = "INSERT INTO USUARIO (EMAIL, PASSWORD, ID_ROL) VALUES( ";
 
     private final String SQL_FINDALL
             = "SELECT * FROM USUARIO";
+
+
+
+
+
+
     /*
     private final String SQL_FIND_BY_FILTER = 
             "SELECT p.titulo, p.descripcion, p.ano, c.nombre " +
@@ -45,10 +54,12 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
     public int add(Usuario bean) {
         this.motorSql.connect();
         String sql = "";
-        sql+= "INSERT INTO USUARIO (EMAIL, PASSWORD) VALUES(";
+        sql+= SQL_ADD;
                 sql+= "'" + bean.getEmail() + "'";
                 sql+= ",";
                 sql+= "'" + bean.getPassword()+ "'";
+                sql+= ",";
+                sql+= "1";
                 sql+= ")";
 
         int filasModificadas = this.motorSql.execute(sql);
@@ -97,9 +108,11 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         }
         return usuarios;
     }
+
+    @Override
     
-    public Usuario login(String email, String password){
-        String sql = "SELECT EMAIL, PASSWORD FROM USUARIO WHERE EMAIL = '"+email+"' AND PASSWORD='"+password+"' ";
+    public Usuario login(Usuario bean){
+        String sql = "SELECT EMAIL, PASSWORD FROM USUARIO WHERE EMAIL = '"+bean.getEmail()+"' AND PASSWORD='"+bean.getPassword()+"' ";
         this.motorSql.connect();
         ResultSet rs =  this.motorSql.executeQuery(sql);
         Usuario usuario = new Usuario();
@@ -119,6 +132,28 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         return usuario;
     }
 
+    @Override
+    public Usuario findByEmail(String email) {
+        String sql = "SELECT * FROM USUARIO WHERE EMAIL = '" + email + "'";
+        this.motorSql.connect();
+        ResultSet rs = this.motorSql.executeQuery(sql);
+        Usuario usuario = null;
+        try {
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setEmail(rs.getString("EMAIL"));
+                usuario.setPassword(rs.getString("PASSWORD"));
+                // Asumiendo que hay otros campos que quieres recuperar también
+                // usuario.setId_usuario(rs.getInt("ID_USUARIO"));
+                // usuario.setNombre(rs.getString("NOMBRE"));
+                // Y así sucesivamente...
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.motorSql.disconnect();
+        return usuario;
+    }
 
 
 }

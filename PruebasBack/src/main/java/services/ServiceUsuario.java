@@ -1,16 +1,17 @@
 package services;
 
 import dao.DAO;
+import dao.UsuarioDAOInterface;
 import entities.Usuario;
 
 import java.util.ArrayList;
 
 public class ServiceUsuario {
 
-    private DAO<Usuario, Integer> myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
+    private UsuarioDAOInterface myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
 
     // Constructor en el que se establece el repositorio a llamar
-    public ServiceUsuario(DAO<Usuario, Integer> myRepo){
+    public ServiceUsuario(UsuarioDAOInterface myRepo){
         this.myRepo = myRepo;
     }
 
@@ -22,6 +23,14 @@ public class ServiceUsuario {
     // Función para llamar al registro de usuarios
     public int registrarUsuario(Usuario usuario){
         return myRepo.add(usuario);
+    }
+
+    public Usuario logearUsuario(Usuario usuario){
+        return myRepo.login(usuario);
+    }
+
+    public Usuario findByEmail(String email){
+        return myRepo.findByEmail(email);
     }
 
 
