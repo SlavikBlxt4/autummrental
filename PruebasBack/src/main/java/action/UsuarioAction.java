@@ -12,8 +12,11 @@ import entities.Usuario;
 import dao.UsuarioDAO;
 import utils.MotorSQL;
 import utils.PasswordUtils;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UsuarioAction implements IAction {
 
@@ -35,6 +38,16 @@ public class UsuarioAction implements IAction {
 
         }
         return cadDestino;
+    }
+
+    private String createToken(Usuario usuario) {
+        Algorithm algorithm = Algorithm.HMAC256("secret"); // Usa una clave secreta más fuerte en producción
+        String token = JWT.create()
+                .withSubject(String.valueOf(usuario.getId_usuario())) // Usa un identificador único del usuario
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000)) // Tiempo de expiración
+                .withIssuer("untitled")
+                .sign(algorithm);
+        return token;
     }
 
     private String register(HttpServletRequest request, HttpServletResponse response) {
@@ -85,7 +98,9 @@ public class UsuarioAction implements IAction {
 
         if (usuario != null && PasswordUtils.checkPassword(password, usuario.getPassword())) {
             // Login exitoso
-            return Usuario.fromObjectToJSON(usuario);
+            String token = createToken(usuario);
+            // Incorporar el token en la respuesta. Esto depende de cómo estés manejando las respuestas en tu aplicación.
+            return token;
         } else {
             // Login fallido
             return "ERROR";

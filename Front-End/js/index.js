@@ -85,56 +85,86 @@ document.getElementById('manager').addEventListener('click', function(){
 
 
 
-document.getElementById('login-form').addEventListener('submit', async (event) => {
+document.getElementById('login-form').addEventListener('submit',  (event) => {
   event.preventDefault(); // Evitar la recarga de la página
 
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  try {
-      const response = await fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.LOGIN&EMAIL=${email}&PASSWORD=${password}`, {
-          method: 'GET',
-          
-      });
 
-      if (!response.ok) {
-          throw new Error('Error al iniciar sesión');
-      }
-
-      const data = await response.json();
-
-      if (data.error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al iniciar sesión',
-          text: data.error === 'User not found' ? 'Esta cuenta no está registrada.' : data.error
-        });
-
-    } else {
-        console.log(data); // Manejar la respuesta del servidor según lo necesario
-        localStorage.setItem('token', data.token);
+  fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.LOGIN&EMAIL=${email}&PASSWORD=${password}`, {
+    method: 'GET',
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.text(); 
+    }
+    throw new Error('La solicitud no fue exitosa.');
+  })
+  .then(data => {
+    console.log(data); // Aquí procesarías tu token
+        localStorage.setItem('token', data);
         Swal.fire({
           icon: 'success',
           title: '¡Sesión iniciada!',
           text: 'Sesión iniciada correctamente.'
         });
-        usuarioId=data.usuarioId;
+       /*usuarioId=data.usuarioId;
         console.log(usuarioId);
-        localStorage.setItem('usuarioId', usuarioId);
+        localStorage.setItem('usuarioId', usuarioId);*/
 
         cerrar('.login');
-    }
+  })
+  .catch(error => {
+    console.error('Hubo un problema con la solicitud Fetch:', error);
+  });
 
-
-  } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'No se pudo iniciar sesión',
-        text: 'Esta cuenta no está registrada, verifique las credenciales.'
-      });
-  }
 });
+
+//   try {
+//       const response =  fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.LOGIN&EMAIL=${email}&PASSWORD=${password}`, {
+//           method: 'GET',
+          
+//       });
+
+//       if (!response.ok) {
+//           throw new Error('Error al iniciar sesión');
+//       }
+
+//       const data =  response.text();
+
+//       if (data.error) {
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Error al iniciar sesión',
+//           text: data.error === 'User not found' ? 'Esta cuenta no está registrada.' : data.error
+//         });
+
+//     } else {
+//         console.log(data); // Manejar la respuesta del servidor según lo necesario
+//         localStorage.setItem('token', data.token);
+//         Swal.fire({
+//           icon: 'success',
+//           title: '¡Sesión iniciada!',
+//           text: 'Sesión iniciada correctamente.'
+//         });
+//         usuarioId=data.usuarioId;
+//         console.log(usuarioId);
+//         localStorage.setItem('usuarioId', usuarioId);
+
+//         cerrar('.login');
+//     }
+
+
+//   } catch (error) {
+//       console.error('Error al iniciar sesión:', error);
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'No se pudo iniciar sesión',
+//         text: 'Esta cuenta no está registrada, verifique las credenciales.'
+//       });
+//   }
+// });
 
 // Manejo del formulario de registro
 document.getElementById('register-form').addEventListener('submit', async (event) => {
@@ -658,5 +688,4 @@ setupListeners();
 
 
 //funcion fetch reservas
-
 
