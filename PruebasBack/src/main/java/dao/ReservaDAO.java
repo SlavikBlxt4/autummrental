@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ReservaDAO implements DAO<Reserva, Integer> {
+public class ReservaDAO implements ReservaDAOInterface {
 
 
     private final String SQL_ADD
@@ -32,6 +32,8 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
     private final String SQL_UPDATE = "UPDATE `pelicula` SET ";
     */
     private final String SQL_UPDATE = "UPDATE RESERVA SET ";
+    private final String SQL_FINSTARTDATE = "SELECT FECHA_INICIO FROM RESERVA WHERE ID_RESERVA=";
+    private final String SQL_FINDID = "SELECT ID_COCHE FROM RESERVA WHERE ID_RESERVA=";
 
     private MotorSQL motorSql;
 
@@ -77,6 +79,7 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
         String sql = "";
         sql+= SQL_UPDATE;
         sql+= "FECHA_FINAL='" + bean.getFecha_fin()+ "'";
+        sql+= ", PRECIO=" + bean.getPrecio();
         //hay que hacer un metodo para actualizar el precio cuando se haga un update a la bbdd
         sql+= " WHERE ID_RESERVA=" + bean.getId_reserva();
         int filasModificadas = this.motorSql.execute(sql);
@@ -116,6 +119,46 @@ public class ReservaDAO implements DAO<Reserva, Integer> {
         return reservas;
     }
 
+    @Override
+    public Reserva findStartDateById(Integer e) {;
+
+        String sql = SQL_FINSTARTDATE + e;
+        Reserva reserva = null;
+        try {
+            this.motorSql.connect();
+            ResultSet rs = this.motorSql.executeQuery(sql);
+            if (rs.next()) {
+                reserva = new Reserva();
+                reserva.setFecha_inicio(rs.getDate("FECHA_INICIO").toLocalDate());
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            motorSql.disconnect();
+        }
+        return reserva;
+
+    }
+
+    @Override
+    public Reserva findIdCoche(int e) {
+        String sql = SQL_FINDID + e;
+
+        Reserva reserva = null;
+        try {
+            this.motorSql.connect();
+            ResultSet rs = this.motorSql.executeQuery(sql);
+            if (rs.next()) {
+                reserva = new Reserva();
+                reserva.setId_coche(rs.getInt("ID_COCHE"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            motorSql.disconnect();
+        }
+        return reserva;
+    }
 }
     
   

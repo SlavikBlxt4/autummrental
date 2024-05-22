@@ -3,6 +3,7 @@ package action;
 import dao.CocheDAO;
 import dao.DAO;
 import dao.ReservaDAO;
+import dao.ReservaDAOInterface;
 import entities.Coche;
 import entities.Reserva;
 import services.ServiceCoche;
@@ -55,16 +56,33 @@ public class ReservaAction implements IAction{
     // http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.UPDATE_RESERVA&ID_RESERVA=6&FECHA_FIN=2024-04-30
     private String updateReserva(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSQL = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO reservaDAO = new ReservaDAO(motorSQL);
+        ReservaDAOInterface reservaDAO = new ReservaDAO(motorSQL);
         ServiceReserva serviceReserva = new ServiceReserva(reservaDAO);
+        ServiceCoche serviceCoche = new ServiceCoche(new CocheDAO(motorSQL));
 
         int id_reserva = Integer.parseInt(request.getParameter("ID_RESERVA"));
+        Reserva reservaEncontrada = serviceReserva.encontrarFechaInicioPorId(id_reserva);
+
+        //i want to call my function encontrarFechaInicioPorId() to get the start date, which is on servicereserva
+
+        int id_coche = new ServiceReserva(reservaDAO).encontrarIdCochePorId(id_reserva).getId_coche();
+
+        float coche_precio = serviceCoche.obtenerPrecioCochePorId(id_coche);
+        LocalDate fecha_inicio = reservaEncontrada != null ? reservaEncontrada.getFecha_inicio() : null;
         LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
+
+        long diffInDays = ChronoUnit.DAYS.between(fecha_inicio, fecha_fin);
+
+        float precio = coche_precio/30*diffInDays;
+
         //i want to update only the end date depending of each id_reserva
+
+
 
         Reserva reserva = new Reserva();
         reserva.setId_reserva(id_reserva);
         reserva.setFecha_fin(fecha_fin);
+        reserva.setPrecio((float) (Math.round(precio*100)/100));
         serviceReserva.updateEndDate(reserva);
 
         String resp = "";
@@ -82,7 +100,7 @@ public class ReservaAction implements IAction{
 
     private String addNewReserva(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO reservaDao = new ReservaDAO(motorSql);
+        ReservaDAOInterface reservaDao = new ReservaDAO(motorSql);
         ServiceReserva serviceReserva = new ServiceReserva(reservaDao);
         ServiceCoche serviceCoche = new ServiceCoche(new CocheDAO(motorSql));
 
@@ -128,7 +146,7 @@ public class ReservaAction implements IAction{
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
-        DAO reservaDao = new ReservaDAO(motorSql);
+        ReservaDAOInterface reservaDao = new ReservaDAO(motorSql);
         ServiceReserva serviceReserva = new ServiceReserva(reservaDao);
         ArrayList<Reserva> reservas = serviceReserva.leerTodasLasReservas();
 

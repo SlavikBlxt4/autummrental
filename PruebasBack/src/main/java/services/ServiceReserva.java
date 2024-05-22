@@ -1,6 +1,7 @@
 package services;
 
 import dao.DAO;
+import dao.ReservaDAOInterface;
 import entities.Coche;
 import entities.Reserva;
 
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 
 public class ServiceReserva {
 
-    private DAO<Reserva, Integer> myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
+    private ReservaDAOInterface myRepo;  // objeto del tipo interfaz de DAO (la más alta para ser genérico)
 
     // Constructor en el que se establece el repositorio a llamar
-    public ServiceReserva(DAO<Reserva, Integer> myRepo){
+    public ServiceReserva(ReservaDAOInterface myRepo){
         this.myRepo = myRepo;
     }
 
@@ -30,6 +31,13 @@ public class ServiceReserva {
 
         myRepo.update(reserva);
         return 1;
+    }
+
+    public Reserva encontrarFechaInicioPorId(int id_reserva){
+        return myRepo.findStartDateById(id_reserva);
+    }
+    public Reserva encontrarIdCochePorId(int id_reserva){
+        return myRepo.findIdCoche(id_reserva);
     }
 
     // Función para llamar a add()

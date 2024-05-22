@@ -22,6 +22,7 @@ public class CocheDAO implements CocheDAOInterface {
     private final String SQL_DELETE = "DELETE FROM COCHE WHERE ID_COCHE=";
 
     private final String SQL_UPDATE = "UPDATE COCHE SET ";
+    private final String SQL_FINDPRICE = "SELECT PRECIO FROM COCHE WHERE ID_COCHE=";
 
 
     private MotorSQL motorSql;
@@ -137,7 +138,7 @@ public class CocheDAO implements CocheDAOInterface {
 
     @Override
     public Coche findPriceById(int e) {
-        String sql = "SELECT precio FROM COCHE WHERE id_coche=" + e;
+        String sql = SQL_FINDPRICE + e;
 
         Coche coche = null;
         try {
@@ -154,6 +155,8 @@ public class CocheDAO implements CocheDAOInterface {
         }
         return coche;
     }
+
+
 }
     
   
