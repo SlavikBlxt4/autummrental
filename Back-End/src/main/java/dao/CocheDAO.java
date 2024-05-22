@@ -169,8 +169,8 @@ public class CocheDAO implements CocheDAOInterface {
             "\t\t\t(FECHA_FINAL BETWEEN '2024-05-20' AND '2024-05-22'));";*/
         this.motorSql.connect();
         String sql = SQL_FINDBETWEENDATES;
-        sql+= "WHERE (FECHA_INICIO BETWEEN "+bean.getFecha_inicio()+" AND "+bean.getFecha_fin()+") OR\n" +
-            "\t\t\t(FECHA_FINAL BETWEEN "+bean.getFecha_inicio()+" AND "+bean.getFecha_fin()+"));";
+        sql+= "WHERE (FECHA_INICIO BETWEEN '"+bean.getFecha_inicio()+"' AND '"+bean.getFecha_fin()+"') OR\n" +
+            "\t\t\t(FECHA_FINAL BETWEEN '"+bean.getFecha_inicio()+"' AND '"+bean.getFecha_fin()+"'));";
         ResultSet rs = this.motorSql.executeQuery(sql);
 
         ArrayList<Coche> coches = new ArrayList<>();

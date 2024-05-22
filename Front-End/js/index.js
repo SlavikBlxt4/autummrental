@@ -28,10 +28,40 @@ async function cargarCoches() {
     }
 }
 
+async function cargarCochesEntreFechas(fechaInicio, fechaFin){
+    try {
+        // Obtener coches del servicio
+        const coches = await CarService.obtenerCochesPorFecha(fechaInicio, fechaFin);
+
+        // Limpiar contenedor
+        appContainer.innerHTML = '';
+
+        // Renderizar coches
+        coches.forEach(cocheData => {
+            const cocheComponent = new CarComponent(cocheData);
+            const cocheElement = cocheComponent.render();
+            appContainer.appendChild(cocheElement);
+        });
+    } catch (error) {
+        console.error('Error al cargar las películas:', error);
+    }
+}
+
+
+
+document.getElementById('load-available-cars').addEventListener('click', function(event){
+  event.preventDefault();
+  const fechaInicio = document.getElementById('fecha-inicio').value;
+  const fechaFin = document.getElementById('fecha-fin').value;
+  cargarCochesEntreFechas(fechaInicio, fechaFin);
+
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   cargarCoches();
 
 });
+
 
 
 //scripts para la seleccion de fechas de reserva de coches

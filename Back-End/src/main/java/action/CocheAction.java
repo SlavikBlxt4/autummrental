@@ -146,11 +146,12 @@ public class CocheAction implements IAction{
         LocalDate fecha_inicio = LocalDate.parse(request.getParameter("FECHA_INICIO"));
         LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
         Reserva reserva = new Reserva();
+        reserva.setFecha_inicio(fecha_inicio);
+        reserva.setFecha_fin(fecha_fin);
         ArrayList<Coche> coches = serviceCoche.obtenerCochesPorFecha(reserva);
 
 
-        reserva.setFecha_inicio(fecha_inicio);
-        reserva.setFecha_fin(fecha_fin);
+
 
         if(coches.isEmpty()){
             coches = serviceCoche.leerTodosLosCoches();
