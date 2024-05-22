@@ -695,6 +695,30 @@ html {
 	font-size: 1rem;
 }
 
+#load-available-cars{
+	text-decoration: none;
+    color: #fff;
+    background-color: #FD7C07;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    border-radius: 3rem;
+    font-size: 1.4rem;
+    border: none;
+    font-family: inherit;
+    box-shadow: inset 0 0 0 0 #FD7C07;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    margin-top: 10px;
+    margin-left: 0.7em;
+}
+
+#load-available-cars:hover {
+	box-shadow: inset 0 100px 0 0 #FD7C07;
+	color: #FFF;
+	cursor: pointer;
+}
+
 
 /* ********************************** */
 /*             ABOUT US               */
