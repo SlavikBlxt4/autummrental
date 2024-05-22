@@ -12,5 +12,15 @@ export class CarRepository {
         }
     }
 
+    static async getCarsBetweenDates(startDate, endDate){
+        const urlApi = `http://localhost:8080/AutumnRental/Controller?ACTION=COCHE.FINDBYDATE&FECHA_INICIO=${startDate}&FECHA_FIN=${endDate}`;
+        try {
+            const response = await fetch(urlApi);
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     
 }
