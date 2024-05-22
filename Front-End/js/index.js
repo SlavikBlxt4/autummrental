@@ -34,6 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+//scripts para la seleccion de fechas de reserva de coches
+document.getElementById('load-available-cars').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevenir el envío del formulario para procesamiento en JS
+  const fechaInicio = document.getElementById('fecha-inicio').value;
+  const fechaFin = document.getElementById('fecha-fin').value;
+
+  if (new Date(fechaInicio) > new Date(fechaFin)) {
+      alert('La fecha de inicio no puede ser mayor que la fecha de fin.');
+  } else {
+      // Lógica para consultar coches disponibles
+      console.log(`Consultar coches disponibles del ${fechaInicio} al ${fechaFin}`);
+  }
+});
+
+
+document.getElementById('load-available-cars').addEventListener('click', function(){
+  event.preventDefault(); // Prevenir el envío del formulario para procesamiento en JS
+  const fechaInicio = document.getElementById('fecha-inicio').value;
+  const fechaFin = document.getElementById('fecha-fin').value;
+})
+
+
 
 /* ZONA DE AVANCES DE XAVI */
 

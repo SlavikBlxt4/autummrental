@@ -5,6 +5,7 @@ import dao.CocheDAOInterface;
 import dao.DAO;
 import dao.UsuarioDAO;
 import entities.Coche;
+import entities.Reserva;
 import entities.Usuario;
 import services.ServiceCoche;
 import services.ServiceUsuario;
@@ -13,6 +14,7 @@ import utils.MotorSQL;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CocheAction implements IAction{
@@ -26,6 +28,9 @@ public class CocheAction implements IAction{
             case "FINDALL":
                 cadDestino = findAll(request, response);
                 break;
+                case "FINDBYDATE":
+                    cadDestino = findByDate(request, response);
+                    break;
             case "NEW_CAR":
                 cadDestino = addNewCar(request, response);
                 break;
@@ -129,6 +134,28 @@ public class CocheAction implements IAction{
         CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
         ArrayList<Coche> coches = serviceCoche.leerTodosLosCoches();
+
+        return Coche.toArrayJSon(coches);
+    }
+
+
+    private String findByDate(HttpServletRequest request, HttpServletResponse response) {
+        MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
+        CocheDAOInterface cocheDao = new CocheDAO(motorSql);
+        ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
+        LocalDate fecha_inicio = LocalDate.parse(request.getParameter("FECHA_INICIO"));
+        LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
+        Reserva reserva = new Reserva();
+        ArrayList<Coche> coches = serviceCoche.obtenerCochesPorFecha(reserva);
+
+
+        reserva.setFecha_inicio(fecha_inicio);
+        reserva.setFecha_fin(fecha_fin);
+
+        if(coches.isEmpty()){
+            coches = serviceCoche.leerTodosLosCoches();
+        }
+
 
         return Coche.toArrayJSon(coches);
     }

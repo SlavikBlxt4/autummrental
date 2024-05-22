@@ -3,6 +3,7 @@ package services;
 import dao.CocheDAOInterface;
 import dao.DAO;
 import entities.Coche;
+import entities.Reserva;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,10 @@ public class ServiceCoche {
 
     public float obtenerPrecioCochePorId(int id_coche){
         return myRepo.findPriceById(id_coche).getPrecio();
+    }
+
+        public ArrayList<Coche> obtenerCochesPorFecha(Reserva bean){
+        return myRepo.findBetweenDates(bean);
     }
 
 }

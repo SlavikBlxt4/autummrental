@@ -1,6 +1,7 @@
 package dao;
 
 import entities.Coche;
+import entities.Reserva;
 import entities.Usuario;
 import utils.MotorSQL;
 
@@ -23,6 +24,11 @@ public class CocheDAO implements CocheDAOInterface {
 
     private final String SQL_UPDATE = "UPDATE COCHE SET ";
     private final String SQL_FINDPRICE = "SELECT PRECIO FROM COCHE WHERE ID_COCHE=";
+    private final String SQL_FINDBETWEENDATES = "SELECT * FROM COCHE\n" +
+            "WHERE ID_COCHE NOT IN (SELECT ID_COCHE\n" +
+            "\tFROM RESERVA\n ";
+            /*"\tWHERE (FECHA_INICIO BETWEEN '2024-05-20' AND '2024-05-22') OR\n" +
+            "\t\t\t(FECHA_FINAL BETWEEN '2024-05-20' AND '2024-05-22'));";*/
 
 
     private MotorSQL motorSql;
@@ -154,6 +160,39 @@ public class CocheDAO implements CocheDAOInterface {
             this.motorSql.disconnect();
         }
         return coche;
+    }
+
+    @Override
+    public ArrayList<Coche> findBetweenDates(Reserva bean) {
+
+        /*"\tWHERE (FECHA_INICIO BETWEEN '2024-05-20' AND '2024-05-22') OR\n" +
+            "\t\t\t(FECHA_FINAL BETWEEN '2024-05-20' AND '2024-05-22'));";*/
+        this.motorSql.connect();
+        String sql = SQL_FINDBETWEENDATES;
+        sql+= "WHERE (FECHA_INICIO BETWEEN "+bean.getFecha_inicio()+" AND "+bean.getFecha_fin()+") OR\n" +
+            "\t\t\t(FECHA_FINAL BETWEEN "+bean.getFecha_inicio()+" AND "+bean.getFecha_fin()+"));";
+        ResultSet rs = this.motorSql.executeQuery(sql);
+
+        ArrayList<Coche> coches = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Coche coche = new Coche();
+                coche.setId_coche(rs.getInt(1));
+                coche.setModelo(rs.getString(2));
+                coche.setDetalles(rs.getString(3));
+                coche.setDescripcion(rs.getString(4));
+                coche.setPrecio(rs.getFloat(5));
+                coche.setDisponibilidad(rs.getBoolean(6));
+                coche.setImagen(rs.getString(7));
+                coches.add(coche);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CocheDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.motorSql.disconnect();
+        }
+
+        return coches;
     }
 
 

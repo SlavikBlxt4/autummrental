@@ -27,7 +27,7 @@ public class UsuarioAction implements IAction {
         String[] arrayAction = action.split("\\.");           // Aqui se divide el string cuando hay un punto
         switch (arrayAction[1]) {
             case "LOGIN":
-                cadDestino = login(request, response);
+                    cadDestino = login(request, response);
                 break;
             case "REGISTER":
                 cadDestino = register(request, response);
