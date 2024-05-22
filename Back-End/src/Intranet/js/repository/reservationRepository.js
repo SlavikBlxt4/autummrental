@@ -22,4 +22,17 @@ export class ReservationRepository{
             console.error(error);
         }
     }
+
+    static async deleteReservation(idReserva) {
+
+        const urlApi = `http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.DELETE_RESERVA&ID_RESERVA=${idReserva}`;
+        
+        try {
+            const response = await fetch(urlApi);
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+        }
+            
+    }
 }

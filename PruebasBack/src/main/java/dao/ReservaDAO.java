@@ -34,6 +34,7 @@ public class ReservaDAO implements ReservaDAOInterface {
     private final String SQL_UPDATE = "UPDATE RESERVA SET ";
     private final String SQL_FINSTARTDATE = "SELECT FECHA_INICIO FROM RESERVA WHERE ID_RESERVA=";
     private final String SQL_FINDID = "SELECT ID_COCHE FROM RESERVA WHERE ID_RESERVA=";
+    private final String SQL_DELETE = "DELETE FROM RESERVA WHERE ID_RESERVA=";
 
     private MotorSQL motorSql;
 
@@ -70,7 +71,12 @@ public class ReservaDAO implements ReservaDAOInterface {
 
     @Override
     public int delete(Integer e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.motorSql.connect();
+        String sql = "DELETE FROM RESERVA WHERE ID_RESERVA=" + e;
+        int filasModificadas = this.motorSql.execute(sql);
+        this.motorSql.disconnect();
+        return filasModificadas;
+
     }
 
     @Override

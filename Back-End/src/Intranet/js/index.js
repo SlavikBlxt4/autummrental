@@ -132,3 +132,22 @@ document.getElementById('delete-button-car').addEventListener('click', function(
       alert('Ocurrió un error al eliminar el coche');
     });
 });
+
+//borrar reserva
+document.getElementById('delete-button-reservation').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  const idReserva = document.getElementById('idreservation-delete-reservation').value;
+
+  ReservationService.borrarReserva(idReserva)
+    .then(response => {
+      console.log(response);
+      alert('Reserva eliminada exitosamente');
+      // Se resetea la caja de input si ha tenido éxito
+      document.getElementById('idreservation-delete-reservation').value = '';
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Ocurrió un error al eliminar la reserva');
+    });
+});

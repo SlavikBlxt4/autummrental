@@ -1,11 +1,8 @@
 package services;
 
-import dao.DAO;
 import dao.ReservaDAOInterface;
-import entities.Coche;
 import entities.Reserva;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ServiceReserva {
@@ -38,6 +35,9 @@ public class ServiceReserva {
     }
     public Reserva encontrarIdCochePorId(int id_reserva){
         return myRepo.findIdCoche(id_reserva);
+    }
+        public int eliminarReserva(int id_reserva){
+        return myRepo.delete(id_reserva);
     }
 
     // Función para llamar a add()

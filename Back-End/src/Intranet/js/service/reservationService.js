@@ -11,4 +11,9 @@ export class ReservationService {
         console.log(`Modificando coche: ${reservationId} - ${endDate}`);
         return await ReservationRepository.updateReservation(reservationId, endDate);
     }
+
+    static async borrarReserva(idReserva) {
+        console.log(`Borrando coche: ${idReserva}`);
+        return await ReservationRepository.deleteReservation(idReserva);
+    }
 }

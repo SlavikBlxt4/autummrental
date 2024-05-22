@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.time.temporal.ChronoUnit;
 
-public class ReservaAction implements IAction{
+public class ReservaAction implements IAction {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -38,15 +38,15 @@ public class ReservaAction implements IAction{
                 cadDestino = findAll(request, response);
                 break;
 
-                case "NEW_RESERVA":
-                    cadDestino = addNewReserva(request, response);
-                    break;
-                case "UPDATE_RESERVA":
-                    cadDestino = updateReserva(request, response);
-                    break;
-                /*case "DELETE_RESERVA":
+            case "NEW_RESERVA":
+                cadDestino = addNewReserva(request, response);
+                break;
+            case "UPDATE_RESERVA":
+                cadDestino = updateReserva(request, response);
+                break;
+                case "DELETE_RESERVA":
                     cadDestino = deleteReserva(request, response);
-                    break;*/
+                    break;
         }
         return cadDestino;
     }
@@ -73,16 +73,15 @@ public class ReservaAction implements IAction{
 
         long diffInDays = ChronoUnit.DAYS.between(fecha_inicio, fecha_fin);
 
-        float precio = coche_precio/30*diffInDays;
+        float precio = coche_precio / 30 * diffInDays;
 
         //i want to update only the end date depending of each id_reserva
-
 
 
         Reserva reserva = new Reserva();
         reserva.setId_reserva(id_reserva);
         reserva.setFecha_fin(fecha_fin);
-        reserva.setPrecio((float) (Math.round(precio*100)/100));
+        reserva.setPrecio((float) (Math.round(precio * 100) / 100));
         serviceReserva.updateEndDate(reserva);
 
         String resp = "";
@@ -105,9 +104,6 @@ public class ReservaAction implements IAction{
         ServiceCoche serviceCoche = new ServiceCoche(new CocheDAO(motorSql));
 
 
-
-
-
         int id_usuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
         int id_coche = Integer.parseInt(request.getParameter("COCHE"));
         float coche_precio = serviceCoche.obtenerPrecioCochePorId(id_coche);
@@ -115,14 +111,7 @@ public class ReservaAction implements IAction{
         LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
         // Calculate the number of days between fecha_inicio and fecha_fin.
         long diffInDays = ChronoUnit.DAYS.between(fecha_inicio, fecha_fin);
-        float precio = coche_precio/30*diffInDays;
-        
-
-
-
-
-
-
+        float precio = coche_precio / 30 * diffInDays;
 
 
         Reserva reserva = new Reserva();
@@ -153,5 +142,22 @@ public class ReservaAction implements IAction{
         return Reserva.toArrayJSon(reservas);
     }
 
+// http://localhost:8080/AutumnRental/Controller?ACTION=RESERVA.DELETE_RESERVA&ID_RESERVA=7
+    private String deleteReserva(HttpServletRequest request, HttpServletResponse response) {
+        MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
+        ReservaDAOInterface reservaDao = new ReservaDAO(motorSql);
+        ServiceReserva serviceReserva = new ServiceReserva(reservaDao);
 
+        int id_reserva = Integer.parseInt(request.getParameter("ID_RESERVA"));
+
+
+        String resp = "";
+        if (serviceReserva.eliminarReserva(id_reserva) > 0) {
+            resp = "OK";
+        } else {
+            resp = "ERROR";
+        }
+        return resp;
+
+    }
 }
