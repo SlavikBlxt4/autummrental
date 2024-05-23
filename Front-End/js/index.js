@@ -73,10 +73,10 @@ async function cargarReservas(idUsuario){
     
 }
 
-/*document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('show-reservations').addEventListener('click', () => {
   const idUsuario = localStorage.getItem('usuarioId');
   cargarReservas(idUsuario);
-});*/
+});
 
 
 document.getElementById('load-available-cars').addEventListener('click', function(event){
