@@ -16,7 +16,7 @@ public class ReservaDAO implements ReservaDAOInterface {
             = "INSERT INTO RESERVA (MODELO, DETALLES, DESCRIPCION, PRECIO, DISPONIBILIDAD, IMAGEN) VALUES( ";
 
     private final String SQL_FINDALL
-            = "SELECT * FROM RESERVA";
+            = "SELECT * FROM RESERVA WHERE ID_USUARIO= ";
     /*
     private final String SQL_FIND_BY_FILTER =
             "SELECT p.titulo, p.descripcion, p.ano, c.nombre " +
@@ -98,6 +98,7 @@ public class ReservaDAO implements ReservaDAOInterface {
     public ArrayList<Reserva> findAll(Reserva bean) {
         ArrayList<Reserva> reservas = new ArrayList<>();
         String sql = SQL_FINDALL;
+        sql += bean.getId_usuario();
         try {
             //1º)
             motorSql.connect();

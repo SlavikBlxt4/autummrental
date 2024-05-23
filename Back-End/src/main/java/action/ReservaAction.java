@@ -137,8 +137,12 @@ public class ReservaAction implements IAction {
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
         ReservaDAOInterface reservaDao = new ReservaDAO(motorSql);
         ServiceReserva serviceReserva = new ServiceReserva(reservaDao);
-        ArrayList<Reserva> reservas = serviceReserva.leerTodasLasReservas();
 
+        int id_usuario = Integer.parseInt(request.getParameter("ID_USUARIO"));
+        Reserva reserva = new Reserva();
+        reserva.setId_usuario(id_usuario);
+
+        ArrayList<Reserva> reservas = serviceReserva.leerTodasLasReservas(reserva);
         return Reserva.toArrayJSon(reservas);
     }
 

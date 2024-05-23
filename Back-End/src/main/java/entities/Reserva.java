@@ -3,6 +3,7 @@ package entities;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import utils.LocalDateTypeAdapter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -90,9 +91,12 @@ public class Reserva {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
 
-        Gson gson = builder.create();
-        String resp = gson.toJson(coches);
 
-        return resp;
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+                .create();
+
+        String jsonString = gson.toJson(coches);
+        return jsonString;
     }
 }

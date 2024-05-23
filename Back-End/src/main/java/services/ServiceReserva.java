@@ -15,8 +15,8 @@ public class ServiceReserva {
     }
 
     // Función para llamar a leerTodosLosUsuarios()
-    public ArrayList<Reserva> leerTodasLasReservas(){
-        return myRepo.findAll(null);
+    public ArrayList<Reserva> leerTodasLasReservas(Reserva reserva){
+        return myRepo.findAll(reserva);
     }
 
     public int registrarReserva(Reserva reserva) {
