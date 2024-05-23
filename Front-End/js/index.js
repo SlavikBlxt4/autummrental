@@ -141,15 +141,18 @@ window.onload = function() { //comprobacion de id y token del usuario logeado al
 // Agregar un evento de clic al enlace para manejarlo con la función enlaceClicado
   
     document.getElementById('employee').addEventListener('click', function(){
-      const usuarioId = localStorage.getItem('usuarioId');
-      if (usuarioId === '2' || usuarioId === '3') {
+      const usuarioId = localStorage.getItem('usuarioIdRol');
+      if (usuarioId === '2') {
         window.location.href = "Intranet/index.html";
       }
     });
     document.getElementById('manager').addEventListener('click', function(){
-      window.location.href = "Intranet/index.html";
+      const usuarioId = localStorage.getItem('usuarioIdRol');
+      if (usuarioId === '3') {
+        window.location.href = "Intranet/index.html";
+      }
     });
-  
+
   
 
 
