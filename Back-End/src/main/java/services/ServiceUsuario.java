@@ -32,6 +32,8 @@ public class ServiceUsuario {
     public Usuario findByEmail(String email){
         return myRepo.findByEmail(email);
     }
-
+    public int encontrarIdRol(String email){
+        return myRepo.findIdRol(email);
+    }
 
 }

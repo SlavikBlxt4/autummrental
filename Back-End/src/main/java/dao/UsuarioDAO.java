@@ -22,6 +22,8 @@ public class UsuarioDAO implements UsuarioDAOInterface {
     private final String SQL_FINDALL
             = "SELECT * FROM USUARIO";
 
+    private final String SQL_FINDIDROL = "SELECT ID_ROL FROM USUARIO WHERE EMAIL = '";
+
 
 
 
@@ -153,6 +155,26 @@ public class UsuarioDAO implements UsuarioDAOInterface {
         }
         this.motorSql.disconnect();
         return usuario;
+    }
+
+    @Override
+    public int findIdRol(String email) {
+        String sql = SQL_FINDIDROL;
+        sql += email + "';";
+
+        this.motorSql.connect();
+        ResultSet rs = this.motorSql.executeQuery(sql);
+        int id_rol = 0;
+        try {
+            if (rs.next()) {
+                id_rol = rs.getInt(1);
+                return id_rol;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.motorSql.disconnect();
+        return id_rol;
     }
 
 

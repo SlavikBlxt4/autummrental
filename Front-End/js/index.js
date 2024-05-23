@@ -97,7 +97,6 @@ window.onload = function() { //comprobacion de id y token del usuario logeado al
   const usuarioId = localStorage.getItem('usuarioId');
   if (usuarioId) {
     console.log('Usuario ID:', usuarioId);
-    console.log('token:', getToken());
     // Realizar acciones adicionales ahora que tiene el usuarioId
   }
 };
@@ -105,33 +104,22 @@ window.onload = function() { //comprobacion de id y token del usuario logeado al
 
 
 
-function getToken(){
-  return localStorage.getItem('token');
-}
-
-function enlaceClicado(url, puerto) {
-  const token = getToken();
-  if (!token) {
-    return console.error('No se pudo obtener el token del usuario');
-  }
-  
-  const urlConPuerto = `${window.location.protocol}//${window.location.hostname}:${puerto}${url}`;
-
-  window.location.href = `${urlConPuerto}?token=${encodeURIComponent(token)}`;
- 
-}
 
 
 
 
 // Agregar un evento de clic al enlace para manejarlo con la función enlaceClicado
-document.getElementById('employee').addEventListener('click', function(){
-  enlaceClicado('/private-area', 3000);
-});
-document.getElementById('manager').addEventListener('click', function(){
-  enlaceClicado('/private-area', 5500);
-});
-
+  
+    document.getElementById('employee').addEventListener('click', function(){
+      const usuarioId = localStorage.getItem('usuarioId');
+      if (usuarioId === '2' || usuarioId === '3') {
+        window.location.href = "Intranet/index.html";
+      }
+    });
+    document.getElementById('manager').addEventListener('click', function(){
+      window.location.href = "Intranet/index.html";
+    });
+  
   
 
 
@@ -155,7 +143,7 @@ document.getElementById('login-form').addEventListener('submit',  (event) => {
   })
   .then(data => {
     console.log(data); // Aquí procesarías tu token
-        localStorage.setItem('token', data);
+        localStorage.setItem('usuarioId', data);
         Swal.fire({
           icon: 'success',
           title: '¡Sesión iniciada!',

@@ -92,15 +92,13 @@ public class UsuarioAction implements IAction {
 
         String email = request.getParameter("EMAIL");
         String password = request.getParameter("PASSWORD");
+        int id_rol = serviceUsuario.encontrarIdRol(email);
 
         // Obtener el usuario por email, asumiendo que existe una función para ello
         Usuario usuario = usuarioDao.findByEmail(email);
 
         if (usuario != null && PasswordUtils.checkPassword(password, usuario.getPassword())) {
-            // Login exitoso
-            String token = createToken(usuario);
-            // Incorporar el token en la respuesta. Esto depende de cómo estés manejando las respuestas en tu aplicación.
-            return token;
+            return String.valueOf(id_rol);
         } else {
             // Login fallido
             return "ERROR";

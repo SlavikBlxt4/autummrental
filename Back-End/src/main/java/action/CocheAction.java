@@ -2,20 +2,19 @@ package action;
 
 import dao.CocheDAO;
 import dao.CocheDAOInterface;
-import dao.DAO;
-import dao.UsuarioDAO;
 import entities.Coche;
 import entities.Reserva;
-import entities.Usuario;
 import services.ServiceCoche;
-import services.ServiceUsuario;
 import utils.FactoryMotorSQL;
 import utils.MotorSQL;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CocheAction implements IAction{
 
@@ -137,12 +136,25 @@ public class CocheAction implements IAction{
         MotorSQL motorSql = FactoryMotorSQL.getInstance(FactoryMotorSQL.POSTGRES);
         CocheDAOInterface cocheDao = new CocheDAO(motorSql);
         ServiceCoche serviceCoche = new ServiceCoche(cocheDao);
+
         LocalDate fecha_inicio = LocalDate.parse(request.getParameter("FECHA_INICIO"));
         LocalDate fecha_fin = LocalDate.parse(request.getParameter("FECHA_FIN"));
         Reserva reserva = new Reserva();
         reserva.setFecha_inicio(fecha_inicio);
         reserva.setFecha_fin(fecha_fin);
         ArrayList<Coche> coches = serviceCoche.obtenerCochesPorFecha(reserva);
+        Map<Integer, Float> carPrices = new HashMap<>();
+
+        long diffInDays = ChronoUnit.DAYS.between(fecha_inicio, fecha_fin);
+
+        for (Coche coche : coches) {
+            float coche_precio = serviceCoche.obtenerPrecioCochePorId(coche.getId_coche());
+            float precio = coche_precio / 30 * diffInDays;
+            coche.setPrecio(precio); // Assuming Coche has a method getId_coche to get the car id
+        }
+
+
+
 
 
 
@@ -150,6 +162,8 @@ public class CocheAction implements IAction{
         if(coches.isEmpty()){
             coches = serviceCoche.leerTodosLosCoches();
         }
+
+        System.out.println(coches);
 
 
         return Coche.toArrayJSon(coches);
