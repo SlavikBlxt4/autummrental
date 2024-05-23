@@ -24,7 +24,7 @@ export class CarComponent {
 
 
         const reserveButton = document.createElement('button');
-        reserveButton.textContent = 'Reservar';
+        reserveButton.textContent = 'Reserve';
 
         cocheContainer.appendChild(cocheImage);
         cocheContainer.appendChild(cocheName);

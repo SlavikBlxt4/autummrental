@@ -85,7 +85,7 @@
 			<div class="content-banner">
 				<p>Flexible Renting</p>
 				<h2>Find your<br />ideal car</h2>
-				<a href="#boton_inicio">See offers</a>
+				<a href="#secc_inicio">See offers</a>
 			</div>
 		</section>
 
@@ -96,11 +96,11 @@
 				<div class="container-categories">
 					<div class="card-category category-moca">
 						<p>Our Vehicles</p>
-						<span><a href="#boton_inicio">Explore</a></span>
+						<span><a href="#secc_inicio">Explore</a></span>
 					</div>
 					<div class="card-category category-expreso">
 						<p>About us</p>
-						<span><a href="#Features">Explore</a></span>
+						<span><a href="#Our-journey">Explore</a></span>
 					</div>
 					<div class="card-category category-capuchino">
 						<p>Read Our Blog</p>
@@ -140,24 +140,8 @@
 				</div>
 			</section>
 
-			<section class="gallery" id="Our-journey">
-				<div class="gallery-item" id="Cuadro1">
-					<div class="text">
-						<h1 id="tit1">Who are <span>we</span>?</h2>
-						<p id="tit2">Welcome to Autumn Rental, where years of experience and a commitment to quality converge to offer you unparalleled car rental services. We began our journey with a simple yet ambitious goal: to elevate the car rental experience. Nowadays, our passion and dedication have seen us grow into a respected leader in the industry. <br><br>
 
-							At Autumn Rental, we pride ourselves on the quality of our services. Every vehicle in our diverse fleet is meticulously maintained and regularly updated to ensure safety, comfort, and reliability. Our experienced team goes above and beyond to ensure that each customer receives personalized attention, comprehensive support, and flexible solutions that best meet their needs.<br><br>
-							
-							From our early days to now, our mission has remained the same: to provide exceptional service and reliable vehicles that you can trust. Whether you're renting for business or pleasure, short-term or long, Autumn Rental is here to ensure your journey is smooth and successful. Join us and experience the difference dedication and quality can make.</p>
-						<a href="#Seccion-de-contacto"><button id="boton_inicio">Contact Us</button></a>
-					</div>
-				</div>
-				<div class="gallery-item" id="Cuadro2">
-					<img src="images/Imagen17.jpg">
-				</div>
-			</section>
-
-			<section class="container top-products">
+			<section class="container top-products" id="secc_inicio">
 				<h1 class="heading-1">Our <span>vehicles</span></h1>
 
 				<div class="container-options">
@@ -169,19 +153,22 @@
 
 				<!-- calendario para seleccionar fechas -->
 				<form id="formulario-fechas">
-					<label for="fecha-inicio">Fecha de inicio:</label>
-					<input type="date" id="fecha-inicio" name="fecha-inicio" required>
+					<div class="fecha-container">
+						<label for="fecha-inicio">Start date:</label>
+						<input type="date" id="fecha-inicio" name="fecha-inicio" required>
+					</div>
+
+					<div class="fecha-container">	
+						<label for="fecha-fin">End date:</label>
+						<input type="date" id="fecha-fin" name="fecha-fin" required>
+					</div>
 					
-					<label for="fecha-fin">Fecha de fin:</label>
-					<input type="date" id="fecha-fin" name="fecha-fin" required>
-					
-					<button type="submit" id="load-available-cars">Consultar coches disponibles</button>
+					<button type="submit" id="load-available-cars">Check Available Cars</button>
 				</form>
 
 				<div class="container-products" id="car-render">
 					
-					
-					
+					<!-- Aparecerán los coches cargados desde base de datos -->
 										
 				</div>
 
@@ -287,6 +274,23 @@
 
 			</section>
 		
+
+			<section class="gallery" id="Our-journey">
+				<div class="gallery-item" id="Cuadro1">
+					<div class="text">
+						<h1 id="tit1">Who are <span>we</span>?</h2>
+						<p id="tit2">Welcome to Autumn Rental, where years of experience and a commitment to quality converge to offer you unparalleled car rental services. We began our journey with a simple yet ambitious goal: to elevate the car rental experience. Nowadays, our passion and dedication have seen us grow into a respected leader in the industry. <br><br>
+
+							At Autumn Rental, we pride ourselves on the quality of our services. Every vehicle in our diverse fleet is meticulously maintained and regularly updated to ensure safety, comfort, and reliability. Our experienced team goes above and beyond to ensure that each customer receives personalized attention, comprehensive support, and flexible solutions that best meet their needs.<br><br>
+							
+							From our early days to now, our mission has remained the same: to provide exceptional service and reliable vehicles that you can trust. Whether you're renting for business or pleasure, short-term or long, Autumn Rental is here to ensure your journey is smooth and successful. Join us and experience the difference dedication and quality can make.</p>
+						<a href="#Seccion-de-contacto"><button id="boton_inicio">Contact Us</button></a>
+					</div>
+				</div>
+				<div class="gallery-item" id="Cuadro2">
+					<img src="images/Imagen17.jpg">
+				</div>
+			</section>
 
 			<section class="container blogs" id="Blogs">
 				<h1 class="heading-1">Read our <span>articles</span></h1>

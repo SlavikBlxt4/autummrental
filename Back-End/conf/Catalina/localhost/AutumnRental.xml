@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="D:/DAM/Proyectos finales/autumn_rental/Back-End/src/main/webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="D:/DAM/Proyectos finales/autumn_rental/Back-End/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/javax.servlet-api-3.1.0.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/google/code/gson/gson/2.9.1/gson-2.9.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/gson-2.9.1.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/mysql-connector-j-8.0.33.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/protobuf-java-3.21.9.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/postgresql-42.7.3.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/checker-qual-3.42.0.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jbcrypt-0.4.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/io/jsonwebtoken/jjwt/0.12.5/jjwt-0.12.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jjwt-0.12.5.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.5/jjwt-api-0.12.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jjwt-api-0.12.5.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.5/jjwt-impl-0.12.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jjwt-impl-0.12.5.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.5/jjwt-jackson-0.12.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jjwt-jackson-0.12.5.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/auth0/java-jwt/3.18.2/java-jwt-3.18.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/java-jwt-3.18.2.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.11.0/jackson-databind-2.11.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jackson-databind-2.11.0.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.11.0/jackson-annotations-2.11.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jackson-annotations-2.11.0.jar"/>
+    <PostResources base="C:/Users/mcres/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.11.0/jackson-core-2.11.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jackson-core-2.11.0.jar"/>
+  </Resources>
+</Context>
