@@ -10,4 +10,5 @@ public interface UsuarioDAOInterface extends DAO<Usuario, Integer> {
 
     Usuario findByEmail(String email);
     public int findIdRol(String email);
+    public int findIdUsuario(String email);
 }

@@ -93,12 +93,14 @@ public class UsuarioAction implements IAction {
         String email = request.getParameter("EMAIL");
         String password = request.getParameter("PASSWORD");
         int id_rol = serviceUsuario.encontrarIdRol(email);
+        int id_usuario = serviceUsuario.encontrarIdUsuario(email);
 
         // Obtener el usuario por email, asumiendo que existe una función para ello
         Usuario usuario = usuarioDao.findByEmail(email);
+        String json = "[{\"id_rol\": " + id_rol + ", \"id_usuario\": " + id_usuario + "}]";
 
         if (usuario != null && PasswordUtils.checkPassword(password, usuario.getPassword())) {
-            return String.valueOf(id_rol);
+            return json;
         } else {
             // Login fallido
             return "ERROR";

@@ -1,5 +1,8 @@
 import { CarService } from './service/carService.js';
 import { CarComponent } from './components/carComponent.js';
+import { ReservationRepository } from './repository/reservationRepository.js';
+import { ReservationService } from './service/reservationService.js';
+import { reservationComponent } from './components/reservationComponent.js';
 
 let products = [];
 let cart = [];
@@ -8,6 +11,7 @@ let usuarioId;
 /* ZONA DE AUTUMN RENTAL */
 
 const appContainer = document.getElementById('car-render');
+const reservaContainer = document.getElementById('reservation-render');
 
 async function cargarCoches() {
     try {
@@ -24,7 +28,7 @@ async function cargarCoches() {
             appContainer.appendChild(cocheElement);
         });
     } catch (error) {
-        console.error('Error al cargar las películas:', error);
+        console.error('Error al cargar los coches:', error);
     }
 }
 
@@ -43,10 +47,36 @@ async function cargarCochesEntreFechas(fechaInicio, fechaFin){
             appContainer.appendChild(cocheElement);
         });
     } catch (error) {
-        console.error('Error al cargar las películas:', error);
+        console.error('Error al cargar los coches:', error);
     }
 }
 
+
+async function cargarReservas(idUsuario){
+  
+    try {
+        // Obtener coches del servicio
+        const reservas = await ReservationService.obtenerReservas(idUsuario);
+
+        // Limpiar contenedor
+        reservaContainer.innerHTML = '';
+
+        // Renderizar coches
+        reservas.forEach(reservaData => {
+            const reservaComponent = new reservationComponent(reservaData);
+            const reservaElement = reservaComponent.render();
+            reservaContainer.appendChild(reservaElement);
+        });
+    } catch (error) {
+        console.error('Error al cargar las reservas:', error);
+    }
+    
+}
+
+/*document.addEventListener('DOMContentLoaded', () => {
+  const idUsuario = localStorage.getItem('usuarioId');
+  cargarReservas(idUsuario);
+});*/
 
 
 document.getElementById('load-available-cars').addEventListener('click', function(event){
@@ -137,13 +167,14 @@ document.getElementById('login-form').addEventListener('submit',  (event) => {
   })
   .then(response => {
     if (response.ok) {
-      return response.text(); 
+      return response.json(); 
     }
     throw new Error('La solicitud no fue exitosa.');
   })
   .then(data => {
     console.log(data); // Aquí procesarías tu token
-        localStorage.setItem('usuarioId', data);
+        localStorage.setItem('usuarioIdRol', data[0].id_rol);
+        localStorage.setItem('usuarioId', data[0].id_usuario);
         Swal.fire({
           icon: 'success',
           title: '¡Sesión iniciada!',
