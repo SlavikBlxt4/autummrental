@@ -13,7 +13,7 @@ public class Coche {
     private String detalles;
     private String descripcion;
     private float precio;
-    private boolean disponibilidad;
+
     private String imagen;
 
     public Coche() {
@@ -59,13 +59,7 @@ public class Coche {
         this.precio = precio;
     }
 
-    public boolean isDisponibilidad() {
-        return disponibilidad;
-    }
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
 
     public String getImagen() {
         return imagen;

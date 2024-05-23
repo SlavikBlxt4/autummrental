@@ -80,7 +80,6 @@ public class CocheDAO implements CocheDAOInterface {
         this.motorSql.connect();
         String sql = "";
         sql+= SQL_UPDATE;
-        sql+= "DISPONIBILIDAD='" + bean.isDisponibilidad()+ "'";
         if (!Objects.equals(bean.getModelo(), "null")) {
             sql+= ", ";
             sql+= "MODELO='" + bean.getModelo() + "'";
@@ -126,8 +125,7 @@ public class CocheDAO implements CocheDAOInterface {
                 coche.setDetalles(rs.getString(3));
                 coche.setDescripcion(rs.getString(4));
                 coche.setPrecio(rs.getFloat(5));
-                coche.setDisponibilidad(rs.getBoolean(6));
-                coche.setImagen(rs.getString(7));
+                coche.setImagen(rs.getString(6));
 
                 coches.add(coche);
             }
@@ -182,8 +180,7 @@ public class CocheDAO implements CocheDAOInterface {
                 coche.setDetalles(rs.getString(3));
                 coche.setDescripcion(rs.getString(4));
                 coche.setPrecio(rs.getFloat(5));
-                coche.setDisponibilidad(rs.getBoolean(6));
-                coche.setImagen(rs.getString(7));
+                coche.setImagen(rs.getString(6));
                 coches.add(coche);
             }
         } catch (SQLException ex) {

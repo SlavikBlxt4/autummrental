@@ -21,9 +21,7 @@ export class CarComponent {
 
         const cocheDetails = document.createElement('p');
         cocheDetails.textContent = this.cocheData.detalles;
-        
-        const cocheAvailability = document.createElement('p');
-        cocheAvailability.textContent = this.cocheData.disponibilidad ? 'Disponible' : 'No disponible'; // el ? es un operador ternario para asignar 'Disponible' o 'No disponible' dependiendo de si la disponibilidad es true o false
+
 
         const reserveButton = document.createElement('button');
         reserveButton.textContent = 'Reservar';
@@ -32,7 +30,6 @@ export class CarComponent {
         cocheContainer.appendChild(cocheName);
         cocheContainer.appendChild(cochePrice);
         cocheContainer.appendChild(cocheDetails);
-        cocheContainer.appendChild(cocheAvailability);
         cocheContainer.appendChild(reserveButton);
 
         return cocheContainer;

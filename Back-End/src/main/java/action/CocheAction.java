@@ -83,7 +83,6 @@ public class CocheAction implements IAction{
         String detalles = request.getParameter("DETALLES");
         String descripcion = request.getParameter("DESCRIPCION");
         String precio = request.getParameter("PRECIO");
-        String disponibilidad = request.getParameter("DISPONIBILIDAD");
         String imagen = request.getParameter("IMAGEN");
 
         Coche coche = new Coche();
@@ -95,11 +94,6 @@ public class CocheAction implements IAction{
             coche.setPrecio(-1);
         }else {
             coche.setPrecio((float) Double.parseDouble(precio));
-        }
-        if (disponibilidad.equals("true")) {
-            coche.setDisponibilidad(true);
-        }else {
-            coche.setDisponibilidad(false);
         }
         coche.setImagen(imagen);
 
