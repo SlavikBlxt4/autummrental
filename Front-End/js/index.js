@@ -281,10 +281,24 @@ document.getElementById('register-form').addEventListener('submit', async (event
           icon: 'success',
           title: '¡Registro exitoso!',
           text: 'Usuario registrado correctamente.'
+          
         });
 
         cerrar('.register');
+        const loginResponse = await fetch(`http://localhost:8080/AutumnRental/Controller?ACTION=USUARIO.LOGIN&EMAIL=${email}&PASSWORD=${password}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if(loginResponse.status === 200) {
+        const loginData = await loginResponse.json();
+        // Guardar los datos de autenticación en tu aplicación (por ejemplo, en el localStorage)
+        localStorage.setItem('usuarioIdRol', loginData[0].id_rol);
+        localStorage.setItem('usuarioId', loginData[0].id_usuario);
       }
+    }
 
 
      /* console.log(data); // Manejar la respuesta del servidor según lo necesario
