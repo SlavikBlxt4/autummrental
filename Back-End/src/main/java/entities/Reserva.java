@@ -17,6 +17,25 @@ public class Reserva {
     private int id_reserva;
     private int id_usuario;
     private int id_coche;
+    private String modelo_coche;
+    private String imagen_coche;
+
+    public String getModelo_coche() {
+        return modelo_coche;
+    }
+
+    public void setModelo_coche(String modelo_coche) {
+        this.modelo_coche = modelo_coche;
+    }
+
+    public String getImagen_coche() {
+        return imagen_coche;
+    }
+
+    public void setImagen_coche(String imagen_coche) {
+        this.imagen_coche = imagen_coche;
+    }
+
     private LocalDate fecha_inicio;
     private LocalDate fecha_fin;
     private float precio;

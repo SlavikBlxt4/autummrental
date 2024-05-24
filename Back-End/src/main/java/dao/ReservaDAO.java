@@ -16,7 +16,10 @@ public class ReservaDAO implements ReservaDAOInterface {
             = "INSERT INTO RESERVA (MODELO, DETALLES, DESCRIPCION, PRECIO, DISPONIBILIDAD, IMAGEN) VALUES( ";
 
     private final String SQL_FINDALL
-            = "SELECT * FROM RESERVA WHERE ID_USUARIO= ";
+            = "SELECT c.modelo AS modelo_coche, c.imagen AS imagen_coche, r.precio, r.fecha_inicio, r.fecha_final\n" +
+            "FROM reserva r\n" +
+            "JOIN coche c ON r.id_coche = c.id_coche\n" +
+            "\tWHERE ID_USUARIO = ";
     /*
     private final String SQL_FIND_BY_FILTER =
             "SELECT p.titulo, p.descripcion, p.ano, c.nombre " +
@@ -99,6 +102,7 @@ public class ReservaDAO implements ReservaDAOInterface {
         ArrayList<Reserva> reservas = new ArrayList<>();
         String sql = SQL_FINDALL;
         sql += bean.getId_usuario();
+        sql += " ORDER BY FECHA_INICIO ASC";
         try {
             //1º)
             motorSql.connect();
@@ -108,12 +112,11 @@ public class ReservaDAO implements ReservaDAOInterface {
             while (rs.next()) { // TRANSFOMAR LA COLECCIÓN DEBASE DE DATOS A UN ARRAYLIST
                 Reserva reserva = new Reserva();
 
-                reserva.setId_reserva(rs.getInt("ID_RESERVA"));
-                reserva.setId_usuario(rs.getInt("ID_USUARIO"));
-                reserva.setId_coche(rs.getInt("ID_COCHE"));
+                reserva.setModelo_coche(rs.getString("MODELO_COCHE"));
+                reserva.setImagen_coche(rs.getString("IMAGEN_COCHE"));
                 reserva.setFecha_inicio(rs.getDate("FECHA_INICIO").toLocalDate());
                 reserva.setFecha_fin(rs.getDate("FECHA_FINAL").toLocalDate());
-                reserva.setPrecio(rs.getFloat("PRECIO"));
+                reserva.setPrecio(rs.getInt("PRECIO"));
 
                 reservas.add(reserva);
             }
