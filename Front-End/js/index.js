@@ -144,13 +144,7 @@ document.getElementById('load-available-cars').addEventListener('click', functio
 
 
 // Obtener usuarioId desde localStorage al cargar la página
-window.onload = function() { //comprobacion de id y token del usuario logeado al cargar la página
-  const usuarioId = localStorage.getItem('usuarioId');
-  if (usuarioId) {
-    console.log('Usuario ID:', usuarioId);
-    // Realizar acciones adicionales ahora que tiene el usuarioId
-  }
-};
+
 
 
 
