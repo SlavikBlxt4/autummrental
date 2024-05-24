@@ -729,6 +729,10 @@ html {
 	cursor: pointer;
 }
 
+.id-coche{
+	display: none;
+}
+
 
 /* ********************************** */
 /*             ABOUT US               */

@@ -92,6 +92,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+//funcion para recoger los datos del coche al cual realizaremos la reserva
+/*document.getElementById('reserve-button').addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const userId = localStorage.getItem('usuarioId');
+  const carId = cocheContainer.querySelector('#id-coche').textContent;
+  const startDate = document.querySelector('#fecha-inicio').value;
+  const endDate = document.querySelector('#fecha-inicio').value;
+
+
+  ReservationService.añadirReserva(userId, carId, startDate, endDate)
+  .then(response => {
+    console.log(response);
+    alert('Reserva anadida exitosamente');
+    
+  }).catch(error =>{
+    console.error(error);
+    alert('Ocurrio un error al anadir la reserva');
+  });
+});*/
+
 
 
 //scripts para la seleccion de fechas de reserva de coches

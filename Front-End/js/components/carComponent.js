@@ -1,5 +1,5 @@
 // cocheComponent.js
-
+import { ReservationService } from "../service/reservationService.js";
 export class CarComponent {
     constructor(cocheData) {
         this.cocheData = cocheData;
@@ -22,14 +22,40 @@ export class CarComponent {
         const cocheDetails = document.createElement('p');
         cocheDetails.textContent = this.cocheData.detalles;
 
+        const cocheId = document.createElement('p');
+        cocheId.classList.add('id-coche');
+        cocheId.textContent = this.cocheData.id_coche;
+
 
         const reserveButton = document.createElement('button');
+        reserveButton.classList.add('reserve-button');
+        reserveButton.onclick = function(event) {
+            event.preventDefault();
+            const cocheContainer = this.closest('.coche-container');
+
+            const userId = localStorage.getItem('usuarioId');
+            const carId = cocheContainer.querySelector('.id-coche').textContent;
+            const startDate = document.querySelector('#fecha-inicio').value;
+            const endDate = document.querySelector('#fecha-fin').value;
+
+
+            ReservationService.añadirReserva(userId, carId, startDate, endDate)
+            .then(response => {
+                console.log(response);
+                alert('Reserva anadida exitosamente');
+                
+            }).catch(error =>{
+                console.error(error);
+                alert('Ocurrio un error al anadir la reserva');
+            });
+          };
         reserveButton.textContent = 'Reserve';
 
         cocheContainer.appendChild(cocheImage);
         cocheContainer.appendChild(cocheName);
         cocheContainer.appendChild(cochePrice);
         cocheContainer.appendChild(cocheDetails);
+        cocheContainer.appendChild(cocheId);
         cocheContainer.appendChild(reserveButton);
 
         return cocheContainer;
