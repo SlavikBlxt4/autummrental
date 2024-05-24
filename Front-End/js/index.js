@@ -87,7 +87,8 @@ document.getElementById('load-available-cars').addEventListener('click', functio
 
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (event) => {
+  event.preventDefault();
   cargarCoches();
 
 });
