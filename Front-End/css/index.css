@@ -300,6 +300,27 @@ html {
 /* ********************************** */
 /*            CARRITO                 */
 /* ********************************** */
+
+.reserva-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.reserva-container h3{
+	font-size: 1.6rem;
+}
+
+.reserva-container h5{
+	font-size: 1.3rem;
+}
+
+.reserva-container p{
+	font-size: 1.2rem;
+}
  
 /* máscara oscura que se desplega a la vez que el apartado del carrito */ 
 .cart-overlay {
@@ -343,6 +364,10 @@ html {
 	padding-block: 10px;
 	border-bottom: 1px solid #ddd;
   }
+
+  .cart-header h2{
+	font-size: 1.6rem;
+  }
   
   .cart-close {
 	position: absolute;
@@ -360,6 +385,7 @@ html {
 	padding-block: 20px;
 	overflow: auto;
   }
+
   
   /* hide footer if the cart is empty */
   .cart-body:has(.cart-empty) + .cart-footer {
@@ -711,7 +737,7 @@ html {
 	display: inline-block;
 	padding: 0.5rem 2rem;
 	border-radius: 3rem;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	border: none;
 	font-family: inherit;
 	box-shadow: inset 0 0 0 0 #FD7C07;
@@ -903,17 +929,17 @@ html {
 
 .coche-container h3 {
 	margin-left: 1.8rem;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 }
 
 .coche-container h5{
 	margin-left: 1.8rem;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 }
 
 .coche-container p{
 	margin-left: 1.8rem;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 }
 
 .coche-container button {
@@ -923,7 +949,7 @@ html {
 	display: inline-block;
 	padding: 0.5rem 2rem;
 	border-radius: 3rem;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	border: none;
 	font-family: inherit;
 	box-shadow: inset 0 0 0 0 #FD7C07;
