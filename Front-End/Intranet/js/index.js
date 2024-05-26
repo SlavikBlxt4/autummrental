@@ -16,7 +16,11 @@ document.getElementById('add-button-car').addEventListener('click', function(eve
   CarService.añadirCoche(modelo, detalles, precio, url, descripcion)
     .then(response => {
       console.log(response);
-      alert('Coche añadido exitosamente'); 
+      Swal.fire({
+        icon: 'success',
+        title: 'Reservation made!',
+        text: 'Reservation made successfully!.'
+      });
       // Se resetean las cajas de input si ha tenido éxito
       document.getElementById('model-add-car').value = '';
       document.getElementById('details-add-car').value = '';
@@ -44,7 +48,11 @@ document.getElementById('add-button-reservation').addEventListener('click', func
   ReservationService.añadirReserva(userId, carId, startDate, endDate)
   .then(response => {
     console.log(response);
-    alert('Reserva anadida exitosamente');
+    Swal.fire({
+      icon: 'success',
+      title: 'Reservation made!',
+      text: 'Reservation made successfully!.'
+    });
     //resetear los valores si todo va bien
     document.getElementById('iduser-add-reservation').value = '';
     document.getElementById('idvehicle-add-reservation').value = '';
@@ -74,7 +82,11 @@ document.getElementById('modify-button-car').addEventListener('click', function(
   CarService.modificarCoche(id, modelo, detalles, precio, disponibilidad, url, descripcion)
     .then(response => {
       console.log(response);
-      alert('Coche actualizado exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Car modified',
+        text: 'Car modified correctly'
+      });
       // Se resetean las cajas de input si ha tenido éxito
       document.getElementById('id-modify-car').value = '';
       document.getElementById('model-modify-car').value = '';
@@ -101,7 +113,11 @@ document.getElementById('modify-button-reservation').addEventListener('click', f
   ReservationService.modificarReserva(id, endDate)
   .then(response => {
     console.log(response);
-    alert('Reserva modificada correctamente');
+    aSwal.fire({
+      icon: 'success',
+      title: 'Reservation modified!',
+      text: 'Reservation modified successfully!.'
+    });
 
     document.getElementById('idreservation-modify-reservation').value = '';
     document.getElementById('finishtdate-modify-reservation').value = '';
@@ -123,7 +139,11 @@ document.getElementById('delete-button-car').addEventListener('click', function(
   CarService.borrarCoche(id_coche)
     .then(response => {
       console.log(response);
-      alert('Coche eliminado exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Car deleted!',
+        text: 'Car deleted successfully!.'
+      });
       // Se resetea la caja de input si ha tenido éxito
       document.getElementById('id-delete-car').value = '';
     })
@@ -142,7 +162,11 @@ document.getElementById('delete-button-reservation').addEventListener('click', f
   ReservationService.borrarReserva(idReserva)
     .then(response => {
       console.log(response);
-      alert('Reserva eliminada exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Reservation deleted!',
+        text: 'Reservation deleted successfully!.'
+      });
       // Se resetea la caja de input si ha tenido éxito
       document.getElementById('idreservation-delete-reservation').value = '';
     })

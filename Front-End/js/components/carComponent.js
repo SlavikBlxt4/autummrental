@@ -42,7 +42,11 @@ export class CarComponent {
             ReservationService.añadirReserva(userId, carId, startDate, endDate)
             .then(response => {
                 console.log(response);
-                alert('Reserva anadida exitosamente');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Reservation  made',
+                    text: 'Reservation made successfully!.'
+                  });
                 
             }).catch(error =>{
                 console.error(error);
