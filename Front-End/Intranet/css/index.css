@@ -48,6 +48,12 @@ input{
 	font-size: 3rem;
 }
 
+
+.exit-door{
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
 /* ********************************** */
 /*               HEADER               */
 /* ********************************** */
