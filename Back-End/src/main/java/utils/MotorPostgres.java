@@ -12,8 +12,8 @@ public class MotorPostgres extends MotorSQL {
 
     private static final String URL = "jdbc:postgresql://autumnrentaldatabase.ckao0shs26e2.us-east-1.rds.amazonaws.com/postgres";
     private static final String CONTROLADOR = "org.postgresql.Driver";
-    private static final String USER = "postgres";
-    private static final String PASS = "xavineta753";
+    private static final String USER = ""; //aqui se pondria el usuario
+    private static final String PASS = ""; //aqui se pondria la contraseña
     private static final String SSL = "false";
 
     // Constructo   r private
